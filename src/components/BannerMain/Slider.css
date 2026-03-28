@@ -1,0 +1,20 @@
+.slick-prev {
+    left: 16px;
+    z-index: 9;
+}
+.slick-next {
+    right: 16px;
+}
+
+.banner-video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}

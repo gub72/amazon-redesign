@@ -1,0 +1,359 @@
+/* ========================================
+   PRODUCT DETAIL PAGE (PDP) — Amazon Style
+   ======================================== */
+
+.pdp {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+  font-size: 0.9rem;
+  color: #111;
+  min-height: 80vh;
+}
+
+/* ── Breadcrumb ── */
+.pdp__breadcrumb {
+  font-size: 0.8rem;
+  color: #565959;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  align-items: center;
+}
+
+.pdp__breadcrumb a {
+  color: #007185;
+  text-decoration: none;
+}
+
+.pdp__breadcrumb a:hover {
+  text-decoration: underline;
+  color: #c7511f;
+}
+
+.pdp__breadcrumb-current {
+  color: #565959;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+}
+
+/* ── Main layout — 3 columns ── */
+.pdp__main {
+  display: grid;
+  grid-template-columns: 400px 1fr 280px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ── Gallery / Image ── */
+.pdp__gallery {
+  position: sticky;
+  top: 100px;
+}
+
+.pdp__img-wrapper {
+  background: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  min-height: 400px;
+}
+
+.pdp__img {
+  max-width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.pdp__img:hover {
+  transform: scale(1.04);
+}
+
+/* ── Details — center column ── */
+.pdp__details {
+  padding: 0 0.5rem;
+}
+
+.pdp__brand {
+  color: #565959;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.pdp__title {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+  color: #0f1111;
+}
+
+/* ── Rating ── */
+.pdp__rating-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pdp__stars {
+  color: #f90;
+  display: flex;
+  gap: 0.05rem;
+  font-size: 1rem;
+}
+
+.pdp__rating-count {
+  color: #007185;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.pdp__rating-count:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
+
+/* ── Divider ── */
+.pdp__divider {
+  border: none;
+  border-top: 1px solid #e7e7e7;
+  margin: 0.75rem 0;
+}
+
+/* ── Price block ── */
+.pdp__price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.pdp__price-label {
+  color: #565959;
+  font-size: 0.85rem;
+}
+
+.pdp__price {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.05rem;
+  color: #b12704;
+}
+
+.pdp__price-sym {
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.pdp__price-main {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.pdp__price-dec {
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+/* ── Description ── */
+.pdp__description {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* ── Features ── */
+.pdp__features-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #0f1111;
+}
+
+.pdp__features-list {
+  padding-left: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: #333;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ── Buy box ── */
+.pdp__buybox {
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  padding: 1.25rem;
+  background: #fff;
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pdp__buybox-price {
+  font-size: 1.6rem;
+  color: #0f1111;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.05rem;
+}
+
+.pdp__buybox-price > span:first-child {
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.pdp__buybox-dec {
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.pdp__buybox-delivery {
+  font-size: 0.85rem;
+  color: #0f1111;
+}
+
+.pdp__delivery-icon {
+  color: #007600;
+  font-weight: 700;
+  margin-right: 0.2rem;
+}
+
+.pdp__buybox-stock {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.pdp__in-stock {
+  color: #007600;
+}
+
+/* ── Buttons ── */
+.pdp__btn {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: filter 0.15s, box-shadow 0.15s;
+}
+
+.pdp__btn:hover {
+  filter: brightness(0.95);
+  box-shadow: 0 2px 5px rgba(0,0,0,.15);
+}
+
+.pdp__btn--cart {
+  background: #ffd814;
+  border-color: #fcd200;
+  color: #111;
+}
+
+.pdp__btn--buy {
+  background: #ffa41c;
+  border-color: #ff8f00;
+  color: #111;
+}
+
+/* ── Buy box meta ── */
+.pdp__buybox-meta {
+  font-size: 0.8rem;
+  color: #565959;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pdp__buybox-meta span {
+  color: #111;
+  font-weight: 500;
+}
+
+/* ── Not found ── */
+.pdp__not-found {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.pdp__not-found h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.pdp__not-found a {
+  color: #007185;
+  text-decoration: none;
+}
+
+.pdp__not-found a:hover {
+  text-decoration: underline;
+}
+
+/* ══════════════════════════════
+   RESPONSIVE — Tablet (≤ 1100px)
+   ══════════════════════════════ */
+@media screen and (max-width: 1100px) {
+  .pdp__main {
+    grid-template-columns: 320px 1fr 260px;
+  }
+}
+
+/* ══════════════════════════════
+   RESPONSIVE — Mobile (≤ 840px)
+   ══════════════════════════════ */
+@media screen and (max-width: 840px) {
+  .pdp {
+    padding: 0.75rem 0.75rem 3rem;
+  }
+
+  .pdp__main {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pdp__gallery {
+    position: static;
+  }
+
+  .pdp__img-wrapper {
+    min-height: 240px;
+    padding: 1rem;
+  }
+
+  .pdp__img {
+    max-height: 240px;
+  }
+
+  .pdp__details {
+    padding: 0;
+  }
+
+  .pdp__title {
+    font-size: 1.1rem;
+  }
+
+  .pdp__price-main {
+    font-size: 1.6rem;
+  }
+
+  .pdp__buybox {
+    position: static;
+  }
+
+  .pdp__breadcrumb-current {
+    max-width: 180px;
+  }
+}

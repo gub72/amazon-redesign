@@ -1,0 +1,293 @@
+/* ========================================
+   FOOTER - Amazon Brazil Style
+   ======================================== */
+
+.footer {
+  background-color: #131921;
+  color: #ddd;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  padding: 0;
+  width: 100%;
+}
+
+/* ── Back to top ── */
+.footer__back-to-top-container {
+  text-decoration: none;
+}
+
+.footer__back-to-top {
+  background-color: #232f3e;
+  text-align: center;
+  padding: 0.9rem 1rem;
+  transition: background 0.2s;
+}
+
+.footer__back-to-top:hover {
+  background-color: #37475a;
+}
+
+.footer__back-to-top span {
+  color: #fff !important;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 400;
+}
+
+/* ── Main link columns (desktop) ── */
+.footer__main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 1.5rem;
+}
+
+.footer__columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.footer__column-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer__column-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.footer__column-links a,
+.footer__accordion-body a {
+  color: #ccc !important;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.15s;
+}
+
+.footer__column-links a:hover,
+.footer__accordion-body a:hover {
+  text-decoration: underline;
+  color: #fff !important;
+}
+
+/* ── Mobile accordion ── */
+.footer__accordion-list {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid #3a4553;
+}
+
+.footer__accordion {
+  border-bottom: 1px solid #3a4553;
+}
+
+.footer__accordion-header {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+}
+
+.footer__accordion-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #ccc;
+}
+
+.footer__accordion-body {
+  list-style: none;
+  padding: 0 1.25rem;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer__accordion.open .footer__accordion-body {
+  max-height: 500px;
+  padding: 0 1.25rem 1.25rem;
+}
+
+/* ── Mid section (logo + country) ── */
+.footer__mid {
+  border-top: 1px solid #3a4553;
+  padding: 1.5rem 1rem;
+}
+
+.footer__mid-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer__logo-img {
+  width: 90px;
+  filter: brightness(0) invert(1);
+  display: block;
+}
+
+.footer__country-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid #868686 !important;
+  border-radius: 3px;
+  padding: 0.35rem 0.8rem;
+  color: #fff;
+  font-size: 0.8125rem;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.footer__country-btn:hover {
+  border-color: #fff !important;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.footer__flag {
+  font-size: 1rem;
+}
+
+/* ── Bottom legal links ── */
+.footer__bottom {
+  background-color: #0f1111;
+  padding: 1rem 1rem 0.5rem;
+  text-align: center;
+}
+
+.footer__bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.15rem;
+  margin-bottom: 0.35rem;
+}
+
+.footer__bottom-links a {
+  color: #ccc !important;
+  text-decoration: none;
+  font-size: 0.75rem;
+  padding: 0 0.35rem;
+  transition: color 0.15s;
+}
+
+.footer__bottom-links a:hover {
+  text-decoration: underline;
+  color: #fff !important;
+}
+
+.footer__separator {
+  color: #555;
+  font-size: 0.75rem;
+  line-height: 1.8;
+}
+
+.footer__copyright {
+  color: #aaa;
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+
+/* ── Company info ── */
+.footer__company {
+  background-color: #0f1111;
+  text-align: center;
+  padding: 0.75rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.footer__company p {
+  color: #888;
+  font-size: 0.7rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer__company a {
+  color: #aaa !important;
+  text-decoration: none;
+}
+
+.footer__company a:hover {
+  text-decoration: underline;
+  color: #fff !important;
+}
+
+/* ══════════════════════════════
+   RESPONSIVE — Mobile (≤ 840px)
+   ══════════════════════════════ */
+@media screen and (max-width: 840px) {
+  .footer__main {
+    padding: 0;
+  }
+
+  .desktop-footer-links {
+    display: none !important;
+  }
+
+  .footer__accordion-list {
+    display: flex !important;
+  }
+
+  .footer__mid {
+    border-top: none;
+  }
+
+  .footer__bottom-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .footer__separator {
+    display: none;
+  }
+
+  .footer__bottom-links a {
+    font-size: 0.8rem;
+  }
+
+  .footer__company p {
+    font-size: 0.72rem;
+  }
+}
+
+/* ══════════════════════════════
+   RESPONSIVE — Tablet (841-1024px)
+   ══════════════════════════════ */
+@media screen and (min-width: 841px) and (max-width: 1024px) {
+  .footer__columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+  }
+}
