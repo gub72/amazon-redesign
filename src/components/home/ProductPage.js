@@ -2,13 +2,13 @@ import React, { useMemo } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/features/cart/cartSlice";
-import Star from "./Star";
+import Star from "../common/Star";
 import * as utils from "../../logic/utils";
 import productsData from "../../data/products";
 import "../../styles/ProductPage.css";
 
-/* Flatten all products into a single list for O(1) lookup */
-const allProducts = productsData.flat();
+/* All products */
+const allProducts = productsData;
 
 function ProductPage() {
   const { id } = useParams();

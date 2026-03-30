@@ -1,0 +1,158 @@
+/* ========================================
+   PRODUCT SHELF
+   ======================================== */
+
+.shelf {
+  background: transparent;
+  border-radius: 4px;
+  padding: 1rem 1.25rem 1.25rem;
+  margin: 0 auto 1rem;
+  max-width: 1400px;
+}
+
+/* ── Header ── */
+.shelf__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.5rem;
+}
+
+.shelf__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f1111;
+  margin: 0;
+}
+
+.shelf__see-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #007185;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.shelf__see-all:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
+
+.shelf__see-all-arrow {
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+
+.shelf__see-all:hover .shelf__see-all-arrow {
+  transform: translateX(3px);
+}
+
+/* ── Static Grid (≤5 products) ── */
+.shelf__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+}
+
+/* ── Slider (>5 products) ── */
+.shelf__slider {
+  position: relative;
+  margin: 0 -0.25rem;
+}
+
+.shelf__slide-item {
+  padding: 0 0.375rem;
+  height: 100%;
+}
+
+/* Make cards inside slider fill the slide height */
+.shelf__slide-item .plp__card {
+  height: 100%;
+}
+
+/* ── Custom Arrows ── */
+.shelf__arrow {
+  position: absolute;
+  background: transparent !important;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 2;
+  border: none;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.shelf__arrow--prev {
+  left: -44px;
+  border-radius: 0 4px 4px 0;
+}
+
+.shelf__arrow--next {
+  right: -44px;
+  border-radius: 4px 0 0 4px;
+}
+
+.shelf__arrow--prev::before {
+  content: url('data:image/svg+xml,<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 19C0 29.4934 8.50659 38 19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19Z" fill="%23FF6604" fill-opacity="0.05"/><path d="M22.1001 14.0001L22.1001 24.0001C22.1002 24.0991 22.0709 24.1958 22.016 24.2781C21.961 24.3604 21.8829 24.4245 21.7915 24.4624C21.7001 24.5003 21.5995 24.5102 21.5024 24.4909C21.4054 24.4715 21.3163 24.4239 21.2463 24.3539L16.2463 19.3539C16.1999 19.3074 16.163 19.2523 16.1378 19.1916C16.1127 19.1309 16.0997 19.0658 16.0997 19.0001C16.0997 18.9344 16.1127 18.8693 16.1378 18.8086C16.163 18.7479 16.1999 18.6928 16.2463 18.6464L21.2463 13.6464C21.3163 13.5763 21.4054 13.5287 21.5024 13.5093C21.5995 13.49 21.7001 13.4999 21.7915 13.5378C21.8829 13.5757 21.961 13.6398 22.016 13.7221C22.0709 13.8044 22.1002 13.9012 22.1001 14.0001Z" fill="%23FF6604"/></svg>')
+}
+
+.shelf__arrow--next::before {
+  content: url('data:image/svg+xml,<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 19C0 29.4934 8.50659 38 19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19Z" fill="%23FF6604" fill-opacity="0.05"/><path d="M16.0996 24.0001V14.0001C16.0995 13.9011 16.1288 13.8044 16.1837 13.7221C16.2387 13.6398 16.3168 13.5757 16.4082 13.5378C16.4996 13.4999 16.6002 13.49 16.6973 13.5093C16.7943 13.5287 16.8834 13.5763 16.9534 13.6463L21.9534 18.6463C21.9998 18.6928 22.0367 18.7479 22.0619 18.8086C22.087 18.8693 22.1 18.9344 22.1 19.0001C22.1 19.0658 22.087 19.1309 22.0619 19.1916C22.0367 19.2523 21.9998 19.3074 21.9534 19.3538L16.9534 24.3538C16.8834 24.4239 16.7943 24.4715 16.6973 24.4909C16.6002 24.5102 16.4996 24.5003 16.4082 24.4624C16.3168 24.4245 16.2387 24.3604 16.1837 24.2781C16.1288 24.1958 16.0995 24.099 16.0996 24.0001Z" fill="%23FF6604"/></svg>')
+}
+
+/* Hide slick default dots if any */
+.shelf__slider .slick-dots {
+  display: none !important;
+}
+
+/* ══════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════ */
+
+@media screen and (max-width: 1200px) {
+  .shelf__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .shelf__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .shelf__title {
+    font-size: 1.05rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .shelf {
+    margin: 0 0 0.5rem;
+    padding: 0.75rem 0.75rem 1rem;
+    border-radius: 0;
+  }
+
+  .shelf__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .shelf__title {
+    font-size: 0.95rem;
+  }
+
+  .shelf__see-all {
+    font-size: 0.78rem;
+  }
+
+  .shelf__arrow {
+    width: 30px;
+    font-size: 1.5rem;
+  }
+}

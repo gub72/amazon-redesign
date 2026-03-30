@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/CheckoutProduct.css";
 import * as utils from "../../logic/utils";
 import { useDispatch } from "react-redux";
-import Star from "../home/Star";
+import Star from "../common/Star";
 import { removeItem } from "../../redux/features/cart/cartSlice";
 import socials from "../../data/socials";
 

@@ -8,9 +8,9 @@
   max-width: stretch;
 }
 
-.home__row.first {
+/* .home__row.first {
   margin-top: -6rem;
-}
+} */
 
 .home__row {
   display: flex;
@@ -61,9 +61,9 @@
     width: 100%;
   }
 
-  .home__row.first {
+  /* .home__row.first {
     margin-top: -6rem;
-  }
+  } */
 
   .home__row {
     gap: .5em;
@@ -75,7 +75,232 @@
 }
 
 @media screen and (max-width: 500px) {
-  .home__row.first {
+  /* .home__row.first {
     margin-top: -3.5rem;
+  } */
+}
+
+
+/* BannerCategory.css */
+.banner-category-container {
+  padding: 2rem 1rem;
+  max-width: 1400px;
+  margin: -117px auto 0;
+  z-index: 999;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .banner-category-container {
+    padding: 0 2rem 3rem;
   }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Grid para Desktop - Ajustado para 7 cards */
+.desktop-grid {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+
+  /* A partir de 1200px mostra 7 cards */
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* Fixa 7 colunas */
+    gap: 1rem;
+  }
+}
+
+/* Para telas entre 992px e 1199px - mostra 5 cards */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Para telas entre 768px e 991px - mostra 4 cards */
+@media (min-width: 768px) and (max-width: 991px) {
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Container para Mobile Slider */
+.mobile-slider-container {
+  display: block;
+  position: relative;
+  padding: 0 30px;
+}
+
+@media (min-width: 768px) {
+  .mobile-slider-container {
+    display: none;
+  }
+}
+
+/* Estilos para os botões do slick */
+.mobile-slider-container .slick-prev,
+.mobile-slider-container .slick-next {
+  width: 35px;
+  height: 35px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.mobile-slider-container .slick-prev {
+  left: -15px;
+}
+
+.mobile-slider-container .slick-next {
+  right: -15px;
+}
+
+.mobile-slider-container .slick-prev:before,
+.mobile-slider-container .slick-next:before {
+  font-size: 20px;
+  color: #ff6b00;
+  opacity: 1;
+}
+
+.mobile-slider-container .slick-disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.category-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 4px;
+  /* Reduzido para caber melhor */
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.category-image {
+  width: 100%;
+  height: 180px;
+  /* Reduzido para melhor proporção */
+  object-fit: cover;
+}
+
+@media (min-width: 1200px) {
+  .category-image {
+    height: 160px;
+    /* Altura menor para 7 cards */
+  }
+}
+
+@media (min-width: 768px) {
+  .category-image {
+    height: 170px;
+  }
+}
+
+.category-info {
+  padding: 0.75rem;
+  /* Padding reduzido */
+  text-align: center;
+}
+
+.category-name {
+  font-size: 0.9rem;
+  /* Fonte ligeiramente menor */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .category-name {
+    font-size: 1rem;
+  }
+}
+
+.shop-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ff6b00;
+  font-size: 0.75rem;
+  /* Fonte menor para caber melhor */
+  font-weight: 500;
+  text-decoration: none;
+  transition: gap 0.3s ease;
+}
+
+.shop-link:hover {
+  gap: 0.75rem;
+}
+
+/* Ajuste para o slide */
+.category-slide {
+  padding: 0 4px;
+}
+
+.slick-dots {
+  bottom: 127px !important;
+}
+
+.slick-dots li button:before {
+  /* color: white !important; */
+}
+
+.slick-dots li,
+.slick-dots li button:before,
+.slick-dots li button {
+  padding: 0 !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.slick-dots li {
+  padding: 2px !important;
+}
+
+.slick-dots li button:before {
+  position: relative !important;
+}
+
+.slide {
+  position: relative;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 67%, rgba(234, 237, 237, 1) 90%);
+  pointer-events: none;
 }
