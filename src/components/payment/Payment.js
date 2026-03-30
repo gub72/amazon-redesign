@@ -51,13 +51,14 @@ function Payment() {
     setError(event.error ? event.error.message : "");
   };
 
+  // ✅ CÓDIGO CORRIGIDO - Adicionei 'navigate' como dependência
   useEffect(() => {
     if (cart.length === 0) {
       requestAnimationFrame(() => {
         navigate("/checkout", { replace: true });
       });
     }
-  }, [cart]);
+  }, [cart, navigate]); // <--- ADICIONEI 'navigate' aqui!
 
   return (
     <div className="payment">

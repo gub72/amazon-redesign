@@ -7,13 +7,13 @@ import getStorageKey from "../../data/storageKey";
 function Orders() {
   const { profile, orders } = useSelector((state) => state.user);
 
-    // Update orders in local storage
-    useEffect(() => {
-      if (profile && orders?.length > 0) {
-        const LOCAL_STORAGE_KEY = getStorageKey(profile.uid);
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ orders }));
-      }
-    }, [orders]);
+  // Update orders in local storage
+  useEffect(() => {
+    if (profile && orders?.length > 0) {
+      const LOCAL_STORAGE_KEY = getStorageKey(profile.uid);
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ orders }));
+    }
+  }, [orders, profile]); // <--- ADICIONEI 'profile' aqui!
 
   return (
     <div className="orders">
