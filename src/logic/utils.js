@@ -1,8 +1,9 @@
 export const getPrice = (price, type = "main") => {
-  const [main, decimal] = price.split(".");
+  const priceStr = price ? price.toString() : "0";
+  const [main, decimal] = priceStr.includes(".") ? priceStr.split(".") : [priceStr, "00"];
 
   if (type === "decimal") {
-    return decimal;
+    return decimal.padEnd(2, "0").substring(0, 2);
   } else {
     return main;
   }
