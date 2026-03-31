@@ -26,30 +26,9 @@
   margin: 0;
 }
 
-.shelf__see-all {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  color: #007185;
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 0.15s;
-}
-
-.shelf__see-all:hover {
-  color: #c7511f;
-  text-decoration: underline;
-}
-
-.shelf__see-all-arrow {
-  font-size: 1rem;
-  transition: transform 0.2s;
-}
-
-.shelf__see-all:hover .shelf__see-all-arrow {
-  transform: translateX(3px);
+/* ── Visibility toggles ── */
+.shelf__mobile-only {
+  display: none !important;
 }
 
 /* ── Static Grid (≤5 products) ── */
@@ -138,7 +117,14 @@
     border-radius: 0;
   }
 
-  .shelf__grid {
+  /* Hide slider/desktop grid on mobile */
+  .shelf__desktop-only {
+    display: none !important;
+  }
+
+  /* Show mobile 2-column grid */
+  .shelf__mobile-only {
+    display: grid !important;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
   }
@@ -149,10 +135,5 @@
 
   .shelf__see-all {
     font-size: 0.78rem;
-  }
-
-  .shelf__arrow {
-    width: 30px;
-    font-size: 1.5rem;
   }
 }

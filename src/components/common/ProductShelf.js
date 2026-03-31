@@ -66,14 +66,14 @@ function ProductShelf({ title, products, linkTo }) {
         <h2 className="shelf__title">{title}</h2>
         {linkTo && (
           <Link to={linkTo} className="shelf__see-all">
-            Ver tudo <span className="shelf__see-all-arrow">→</span>
+            Confira mais →
           </Link>
         )}
       </div>
 
-      {/* Body — slider or static grid */}
+      {/* Desktop: slider (when >5) or grid (when ≤5) */}
       {needsSlider ? (
-        <div className="shelf__slider">
+        <div className="shelf__slider shelf__desktop-only">
           <Slider {...sliderSettings}>
             {products.map((product) => (
               <div key={product.id} className="shelf__slide-item">
@@ -83,12 +83,19 @@ function ProductShelf({ title, products, linkTo }) {
           </Slider>
         </div>
       ) : (
-        <div className="shelf__grid">
+        <div className="shelf__grid shelf__desktop-only">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}
+
+      {/* Mobile: always 2-column grid, no slider */}
+      <div className="shelf__grid shelf__mobile-only">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
     </section>
   );
 }

@@ -1,55 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const BannerCategory = () => {
-    const [slidesToShow, setSlidesToShow] = useState(2);
-
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 480) {
-                setSlidesToShow(2);
-            } else if (window.innerWidth < 768) {
-                setSlidesToShow(2);
-            } else {
-                setSlidesToShow(2);
-            }
-        };
-
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    // Configurações do slider
+    // Configurações do slider (mobile only)
     const sliderSettings = {
-        dots: false,
+        dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: slidesToShow,
-        slidesToScroll: 1,
-        arrows: true,
-        prevArrow: <button className="slick-prev">‹</button>,
-        nextArrow: <button className="slick-next">›</button>,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    arrows: true
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    arrows: true
-                }
-            }
-        ]
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        arrows: false,
     };
 
     // Dados padrão das categorias caso não tenha no categoriesData
@@ -123,7 +85,7 @@ const BannerCategory = () => {
             <div className="mobile-slider-container">
                 <Slider {...sliderSettings}>
                     {categoryData.map((category) => (
-                        <div key={category.id} className="category-slide">
+                        <div key={category.id} className="category-slide" style={{ width: 'auto' }}>
                             <div className="category-card">
                                 <img
                                     src={category.image}
