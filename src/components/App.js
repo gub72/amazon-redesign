@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import BackToTop from "./common/BackToTop";
 import ProductPage from "./home/ProductPage";
 import SearchPage from "./search/SearchPage";
 import Home from "./home/Home";
@@ -57,6 +58,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <BackToTop />
         <Routes>
           <Route
             path="/"

@@ -11,28 +11,6 @@
   width: 100%;
 }
 
-/* ── Back to top ── */
-.footer__back-to-top-container {
-  text-decoration: none;
-}
-
-.footer__back-to-top {
-  background-color: #232f3e;
-  text-align: center;
-  padding: 0.9rem 1rem;
-  transition: background 0.2s;
-}
-
-.footer__back-to-top:hover {
-  background-color: #37475a;
-}
-
-.footer__back-to-top span {
-  color: #fff !important;
-  text-decoration: none;
-  font-size: 0.8125rem;
-  font-weight: 400;
-}
 
 /* ── Main link columns (desktop) ── */
 .footer__main {

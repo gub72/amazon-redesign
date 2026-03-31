@@ -73,15 +73,6 @@ function FooterAccordion({ section }) {
 function Footer() {
   return (
     <footer className="footer">
-      {/* Back to top */}
-      <a href="#top" className="footer__back-to-top-container">
-        <div className="footer__back-to-top">
-          <span id="footer-back-top">
-            Voltar ao início
-          </span>
-        </div>
-      </a>
-
 
       {/* Main links grid — desktop */}
       <div className="footer__main">
