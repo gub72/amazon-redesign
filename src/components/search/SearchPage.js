@@ -1,13 +1,9 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addItem } from "../../redux/features/cart/cartSlice";
-import { motion } from "motion/react";
-import Star from "../common/Star";
 import ProductCard from "../common/ProductCard";
-import * as utils from "../../logic/utils";
 import productsData from "../../data/products";
 import "../../styles/SearchPage.css";
+
 
 /* All products */
 const ALL_PRODUCTS = productsData;
