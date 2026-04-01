@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/features/cart/cartSlice";
+import { motion } from "motion/react";
+import toast from "react-hot-toast";
 import Star from "../common/Star";
 import * as utils from "../../logic/utils";
 import productsData from "../../data/products";
@@ -62,6 +64,13 @@ function ProductPage() {
     [id]
   );
 
+  useEffect(() => {
+    if (product) {
+      document.title = `${product.name} — Amazon Redesign`;
+    }
+    return () => { document.title = "Amazon Redesign"; };
+  }, [product]);
+
   if (!product) {
     return (
       <div className="pdp__not-found">
@@ -96,6 +105,7 @@ function ProductPage() {
     for (let i = 0; i < qty; i++) {
       dispatch(addItem({ id, title: name, image, price, rating }));
     }
+    toast.success(`${name} adicionado ao carrinho`);
     navigate("/checkout");
   };
 
@@ -103,6 +113,7 @@ function ProductPage() {
     for (let i = 0; i < qty; i++) {
       dispatch(addItem({ id, title: name, image, price, rating }));
     }
+    toast.success("Redirecionando para o pagamento...");
     navigate("/payment");
   };
 
@@ -110,7 +121,12 @@ function ProductPage() {
   const thumbs = [image, image, image, image];
 
   return (
-    <div className="pdp">
+    <motion.div
+      className="pdp"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35 }}
+    >
       {/* Breadcrumb */}
       <nav className="pdp__breadcrumb" aria-label="Breadcrumb">
         <Link to="/">Home</Link>
@@ -136,7 +152,7 @@ function ProductPage() {
             ))}
           </div>
           <div className="pdp__img-wrapper">
-            <img src={image} alt={name} className="pdp__img" />
+            <img src={image} alt={`${name} — ${brand}, ${category}`} className="pdp__img" loading="lazy" />
           </div>
           <p className="pdp__img-hint">Clique para ver a imagem completa</p>
         </div>
@@ -344,20 +360,24 @@ function ProductPage() {
           </div>
 
           {/* Buttons */}
-          <button
+          <motion.button
             className="pdp__btn pdp__btn--cart"
             onClick={handleAddToCart}
             id="pdp-add-to-cart"
+            whileTap={{ scale: 0.97 }}
+            whileHover={{ filter: "brightness(0.95)" }}
           >
             Adicionar ao carrinho
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             className="pdp__btn pdp__btn--buy"
             onClick={handleBuyNow}
             id="pdp-buy-now"
+            whileTap={{ scale: 0.97 }}
+            whileHover={{ filter: "brightness(0.95)" }}
           >
             Comprar agora
-          </button>
+          </motion.button>
 
           {/* Meta info */}
           <div className="pdp__buybox-meta">
@@ -420,7 +440,7 @@ function ProductPage() {
           </button>
         </aside>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -1,8 +1,97 @@
 @import url('http://fonts.cdnfonts.com/css/amazon-ember');
 
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS — LIGHT THEME (default)
+   ═══════════════════════════════════════════ */
+:root {
+  --bg-primary: #eaeded;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-header: #131921;
+  --bg-header-bottom: #232f3e;
+  --bg-footer: #232f3e;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --bg-input: #ffffff;
+  --bg-badge: #ff6b00;
+  --bg-skeleton: #e0e0e0;
+  --bg-skeleton-shine: #f0f0f0;
+
+  --text-primary: #0f1111;
+  --text-secondary: #494d4d;
+  --text-inverse: #ffffff;
+  --text-link: #007185;
+  --text-price: #0f1111;
+  --text-accent: #c45500;
+  --text-success: #067d62;
+  --text-muted: #6b7280;
+
+  --accent: #ff6b00;
+  --accent-hover: #e65c00;
+  --accent-btn: #ffd814;
+  --accent-btn-hover: #f7ca00;
+  --accent-buy: #ffa41c;
+  --accent-buy-hover: #fa8900;
+
+  --border: #d5d9d9;
+  --border-focus: #007185;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.12);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+}
+
+/* ═══════════════════════════════════════════
+   DARK THEME
+   ═══════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg-primary: #111111;
+  --bg-secondary: #1a1a1a;
+  --bg-card: #1e1e1e;
+  --bg-header: #0a0a0a;
+  --bg-header-bottom: #141414;
+  --bg-footer: #0a0a0a;
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+  --bg-input: #2a2a2a;
+  --bg-badge: #ff8c38;
+  --bg-skeleton: #2a2a2a;
+  --bg-skeleton-shine: #3a3a3a;
+
+  --text-primary: #e3e3e3;
+  --text-secondary: #a0a0a0;
+  --text-inverse: #ffffff;
+  --text-link: #4fc3f7;
+  --text-price: #ffffff;
+  --text-accent: #ff8c38;
+  --text-success: #4caf82;
+  --text-muted: #888888;
+
+  --accent: #ff8c38;
+  --accent-hover: #ffa44d;
+  --accent-btn: #ffd814;
+  --accent-btn-hover: #f7ca00;
+  --accent-buy: #ffa41c;
+  --accent-buy-hover: #fa8900;
+
+  --border: #333333;
+  --border-focus: #4fc3f7;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] img:not(.no-dim) {
+  filter: brightness(0.92);
+}
+
 /* Z-INDEX MAP */
 /**
 * .header : 100
+* .scroll-progress : 200
 */
 
 /* Box sizing rules */
@@ -36,15 +125,18 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
-  background: rgb(234, 237, 237);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
+  color: var(--text-link);
 }
 
 /* Make images easier to work with */
@@ -54,7 +146,85 @@ picture {
   display: block;
 }
 
+/* ═══════════════════════════════════════════
+   FOCUS STYLES — Accessibility
+   ═══════════════════════════════════════════ */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
 
+/* ═══════════════════════════════════════════
+   SKIP LINK — Accessibility
+   ═══════════════════════════════════════════ */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  font-weight: 700;
+  font-size: 0.875rem;
+  z-index: 9999;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL PROGRESS BAR
+   ═══════════════════════════════════════════ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--accent);
+  z-index: 200;
+  animation: progressFill linear;
+  animation-timeline: scroll();
+  pointer-events: none;
+}
+
+@keyframes progressFill {
+  to { width: 100%; }
+}
+
+/* ═══════════════════════════════════════════
+   DARK MODE TOGGLE
+   ═══════════════════════════════════════════ */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  color: #fff;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.theme-toggle__icon {
+  font-size: 1rem;
+  line-height: 1;
+}
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
@@ -69,6 +239,10 @@ picture {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .scroll-progress {
+    display: none;
   }
 }
 
@@ -102,4 +276,12 @@ picture {
 
   outline: 0;
   outline-offset: 0;
+}
+
+/* ═══════════════════════════════════════════
+   SKELETON SHIMMER
+   ═══════════════════════════════════════════ */
+.react-loading-skeleton {
+  --base-color: var(--bg-skeleton) !important;
+  --highlight-color: var(--bg-skeleton-shine) !important;
 }

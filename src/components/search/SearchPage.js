@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/features/cart/cartSlice";
+import { motion } from "motion/react";
 import Star from "../common/Star";
 import ProductCard from "../common/ProductCard";
 import * as utils from "../../logic/utils";
@@ -154,7 +155,7 @@ export default function SearchPage() {
 
       <div className="plp__layout">
         {/* ── Sidebar ── */}
-        <aside className={`plp__sidebar ${sidebarOpen ? "plp__sidebar--open" : ""}`}>
+        <aside className={`plp__sidebar ${sidebarOpen ? "plp__sidebar--open" : ""}`} aria-label="Filtros de busca">
           <div className="plp__sidebar-header">
             <span className="plp__sidebar-title">Filtros</span>
             <button className="plp__clear-btn" onClick={clearAll} id="plp-clear-filters">

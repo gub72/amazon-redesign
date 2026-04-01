@@ -1,6 +1,5 @@
 .header {
-  background: #001222;
-  /* Very dark blue matching the image */
+  background: var(--bg-header);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -36,24 +35,23 @@
   border-radius: 4px;
   overflow: hidden;
   /* Ensures border-radius applies to children */
-  background-color: white;
+  background-color: var(--bg-input);
 }
 
 .header__searchFilter--desktop {
-  background-color: #e6e6e6;
-  /* Gray background on left filter */
-  border: 1px solid #e6e6e6;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border);
   padding: 8px 12px;
   display: flex;
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid var(--border);
 }
 
 .header__searchFilter__text {
   font-size: 13px;
-  color: #444;
+  color: var(--text-secondary);
 }
 
 .header__searchInput {
@@ -63,6 +61,8 @@
   border: none;
   outline: none;
   font-size: 14px;
+  background: var(--bg-input);
+  color: var(--text-primary);
 }
 
 .header__searchIcon {
@@ -184,12 +184,12 @@
 
 /* Header Categories (Desktop) */
 .menu-desktop {
-  background-color: #232f3e;
+  background-color: var(--bg-header-bottom);
   color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .menu-container {
@@ -282,7 +282,7 @@
 }
 
 .header__mobileNavContainer {
-  background-color: white;
+  background-color: var(--bg-secondary);
   width: 80%;
   max-width: 320px;
   height: 100%;
@@ -298,7 +298,7 @@
 }
 
 .header__mobileNavHeader {
-  background-color: #232f3e;
+  background-color: var(--bg-header-bottom);
   color: white;
   padding: 15px 25px;
   display: flex;
@@ -322,7 +322,7 @@
 .header__mobileNavSection h3 {
   font-size: 16px;
   font-weight: 700;
-  color: #111;
+  color: var(--text-primary);
   padding: 15px 25px;
   margin: 0;
 }
@@ -339,7 +339,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 25px;
-  color: #444;
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 14px;
   width: 100%;
@@ -351,12 +351,12 @@
 
 .header__mobileNavSection ul li a:hover,
 .header__mobileNavLogout:hover {
-  background-color: #f3f3f3;
+  background-color: var(--bg-primary);
 }
 
 .header__mobileNavSeparator {
   height: 1px;
-  background-color: #ddd;
+  background-color: var(--border);
   margin: 10px 0;
 }
 
@@ -413,7 +413,7 @@
   }
 
   .header__mobileSearch {
-    background-color: #232f3e;
+    background-color: var(--bg-header-bottom);
     padding: 10px;
     width: 100%;
     display: block;

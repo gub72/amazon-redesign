@@ -40,7 +40,7 @@
   padding: .35em 4em;
   margin-inline: auto;
   box-shadow: 0 .1em .25em rgb(235, 235, 235);
-  color: #111;
+  color: var(--text-primary);
 }
 
 .payment__details > form > div > button:disabled {

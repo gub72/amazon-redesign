@@ -6,7 +6,7 @@
 }
 
 .checkout > * {
-  background: white;
+  background: var(--bg-card);
 }
 
 .checkout__left {

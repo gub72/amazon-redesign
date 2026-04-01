@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { auth } from "../config/firebase";
 import MenuDesktop from "../components/header/MenuDesktop";
 import LoginContainer from "./auth/LoginContainer";
+import useDarkMode from "../hooks/useDarkMode";
 import "../styles/LoginModal.css";
 
 function Header() {
@@ -21,6 +22,7 @@ function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
+  const { theme, toggle: toggleTheme } = useDarkMode();
 
   const handleSearch = () => {
     const q = searchQuery.trim();
@@ -54,7 +56,7 @@ function Header() {
   };
 
   return (
-    <div className="header">
+    <header className="header" role="banner">
       <div className="header__container">
         {/* Mobile Left: Hamburger */}
         <button
@@ -164,6 +166,18 @@ function Header() {
             </button>
           </div>
 
+          {/* Dark Mode Toggle */}
+          <button
+            className="theme-toggle mobile-hidden"
+            onClick={toggleTheme}
+            aria-label={theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"}
+            title={theme === "dark" ? "Modo claro" : "Modo escuro"}
+          >
+            <span className="theme-toggle__icon" aria-hidden="true">
+              {theme === "dark" ? "☀️" : "🌙"}
+            </span>
+          </button>
+
           {/* Cart (Applies to both) */}
           <Link to="/checkout" className="header__navLink header__navLink--cart">
             <div className="header__optionBasket">
@@ -232,6 +246,16 @@ function Header() {
             <div className="header__mobileNavSection">
               <h3>Configurações</h3>
               <ul>
+                <li>
+                  <button
+                    className="header__mobileNavLogout"
+                    onClick={toggleTheme}
+                    style={{ justifyContent: "space-between" }}
+                  >
+                    {theme === "dark" ? "☀️ Modo Claro" : "🌙 Modo Escuro"}
+                    <AiOutlineRight />
+                  </button>
+                </li>
                 <li><Link to="/account" onClick={() => setMobileNav(false)}>Sua Conta <AiOutlineRight /></Link></li>
                 <li><Link to="/help" onClick={() => setMobileNav(false)}>Ajuda <AiOutlineRight /></Link></li>
                 {profile ? (
@@ -247,7 +271,7 @@ function Header() {
           <CgClose />
         </button>
       </div>
-    </div>
+    </header>
   );
 }
 

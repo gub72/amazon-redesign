@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import "../../styles/Home.css";
-import { useSelector } from "react-redux";
 import HeroSlider from "../../components/BannerMain/Slider";
 import BannerCategory from "../BannerCategory/index";
 import ProductShelf from "../common/ProductShelf";
 import productsData from "../../data/products";
 
-/* Category label mapping — customize shelf titles here */
+/* Category label mapping */
 const CATEGORY_LABELS = {
   Electronics: "Eletrônicos",
   "Beauty Product": "Beleza",
@@ -16,11 +15,6 @@ const CATEGORY_LABELS = {
 };
 
 function Home() {
-  const cart = useSelector((state) => state.cart);
-
-  const [alert, setAlert] = useState(null);
-  const [timeOutID, setTimeOutID] = useState(null);
-
   /* Group products by category */
   const shelves = useMemo(() => {
     const grouped = {};
@@ -38,26 +32,10 @@ function Home() {
     }));
   }, []);
 
-  useEffect(() => {
-    if (cart.length) {
-      setAlert("Item added to cart");
-
-      if (timeOutID) clearTimeout(timeOutID);
-
-      const TID = setTimeout(() => {
-        setAlert(null);
-      }, 1000);
-
-      setTimeOutID(TID);
-    }
-  }, [cart]);
-
   return (
     <div className="home">
       <div className="home__container">
-
         <HeroSlider />
-
         <BannerCategory />
 
         {/* Category Shelves */}
@@ -69,14 +47,6 @@ function Home() {
             linkTo={shelf.linkTo}
           />
         ))}
-
-      </div>
-
-      <div
-        className={`mobile-hidden ${alert === "Item added to cart" ? "home__alert active" : "home__alert"
-          }`}
-      >
-        {alert}
       </div>
     </div>
   );

@@ -10,7 +10,7 @@
   min-width: 450px; /* Increased for two columns */
   margin-top: 10px;
   animation: fadeInDown 0.2s ease-out;
-  color: #111;
+  color: var(--text-primary);
 }
 
 .login-popover::before {

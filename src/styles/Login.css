@@ -1,7 +1,7 @@
 .login {
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: var(--bg-card);
   flex-direction: column;
   padding-inline: 1em;
 

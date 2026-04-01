@@ -3,7 +3,7 @@
    ======================================== */
 
 .plp {
-  background: #eaeded;
+  background: var(--bg-primary);
   min-height: 80vh;
 }
 
@@ -37,7 +37,7 @@
    SIDEBAR
    ══════════════════════════════ */
 .plp__sidebar {
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 4px;
   padding: 1rem;
   position: sticky;
@@ -57,12 +57,12 @@
 .plp__sidebar-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #0f1111;
+  color: var(--text-primary);
 }
 
 .plp__clear-btn {
   font-size: 0.75rem;
-  color: #007185;
+  color: var(--text-link);
   background: none;
   border: none;
   cursor: pointer;
@@ -90,7 +90,7 @@
 .plp__filter-title {
   font-size: 0.825rem;
   font-weight: 700;
-  color: #0f1111;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
@@ -112,7 +112,7 @@
   align-items: center;
   gap: 0.4rem;
   font-size: 0.8rem;
-  color: #333;
+  color: var(--text-primary);
   cursor: pointer;
 }
 
@@ -158,12 +158,12 @@
 
 .plp__price-preset {
   background: none;
-  border: 1px solid #d5d9d9;
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0.2rem 0.6rem;
   font-size: 0.75rem;
   cursor: pointer;
-  color: #007185;
+  color: var(--text-link);
   transition: all 0.15s;
 }
 
@@ -188,7 +188,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 4px;
   padding: 0.75rem 1rem;
   margin-bottom: 0.75rem;
@@ -197,7 +197,7 @@
 
 .plp__results-count {
   font-size: 0.85rem;
-  color: #565959;
+  color: var(--text-secondary);
 }
 
 .plp__results-count-num {
@@ -215,7 +215,7 @@
 
 .plp__sort-label {
   font-size: 0.8rem;
-  color: #333;
+  color: var(--text-primary);
   white-space: nowrap;
 }
 
@@ -224,7 +224,7 @@
   border-radius: 4px;
   padding: 0.3rem 0.5rem;
   font-size: 0.8rem;
-  background: #fff;
+  background: var(--bg-card);
   cursor: pointer;
   outline: none;
 }
@@ -242,7 +242,7 @@
 }
 
 .plp__chip {
-  background: #fff;
+  background: var(--bg-card);
   border: 1px solid #ff6200;
   border-radius: 14px;
   padding: 0.25rem 0.65rem;
@@ -262,20 +262,14 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
-}
-
-/* ── Product Grid ── */
-.plp__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  padding-top: 6px;
 }
 
 /* Empty state */
 .plp__empty {
   text-align: center;
   padding: 4rem 1rem;
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -289,7 +283,7 @@
 
 .plp__empty-msg {
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .plp__empty-clear {
@@ -301,7 +295,7 @@
 }
 
 .plp__empty-link {
-  color: #007185;
+  color: var(--text-link);
   text-decoration: none;
   font-size: 0.9rem;
 }

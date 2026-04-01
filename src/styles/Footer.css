@@ -3,8 +3,8 @@
    ======================================== */
 
 .footer {
-  background-color: #001222;
-  color: #ddd;
+  background-color: var(--bg-header);
+  color: var(--text-secondary);
   font-size: 0.8125rem;
   line-height: 1.6;
   padding: 0;
@@ -59,11 +59,11 @@
 .footer__accordion-list {
   display: none;
   flex-direction: column;
-  border-top: 1px solid #3a4553;
+  border-top: 1px solid var(--border);
 }
 
 .footer__accordion {
-  border-bottom: 1px solid #3a4553;
+  border-bottom: 1px solid var(--border);
 }
 
 .footer__accordion-header {
@@ -106,7 +106,7 @@
 
 /* ── Mid section (logo + country) ── */
 .footer__mid {
-  border-top: 1px solid #3a4553;
+  border-top: 1px solid var(--border);
   padding: 1.5rem 1rem;
 }
 
@@ -156,7 +156,7 @@
 
 /* ── Bottom legal links ── */
 .footer__bottom {
-  background-color: #232f3e;
+  background-color: var(--bg-footer);
   padding: 1rem 1rem 0.5rem;
   text-align: center;
 }
@@ -196,7 +196,7 @@
 
 /* ── Company info ── */
 .footer__company {
-  background-color: #232f3e;
+  background-color: var(--bg-footer);
   text-align: center;
   padding: 0.75rem 1rem 1.5rem;
   display: flex;
