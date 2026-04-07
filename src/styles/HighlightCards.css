@@ -7,7 +7,7 @@
   max-width: 1400px;
   margin: -117px auto 0;
   position: relative;
-  z-index: 9;
+  z-index: 10;
 }
 
 .highlight-cards__desktop {
@@ -181,7 +181,8 @@
 
 @media screen and (max-width: 768px) {
   .highlight-cards {
-    padding: 1rem 0;
+    padding: 0.5rem 0.5rem;
+    display: none !important;
   }
 
   .highlight-cards__desktop {
@@ -193,9 +194,39 @@
   }
 
   .highlight-card {
-    min-height: 380px;
-    margin: 0 8px;
-    /* Gap for slick slider */
+    min-height: 340px;
+    padding: 0.75rem;
+    margin: 0 4px;
+    border-radius: var(--radius-sm);
+  }
+
+  .highlight-card__title {
+    font-size: 0.95rem;
+  }
+
+  .highlight-card__image-large {
+    height: 140px;
+  }
+
+  .highlight-card__image-thumb {
+    width: 60px;
+    height: 60px;
+  }
+
+  .highlight-card__list {
+    gap: 1rem;
+  }
+
+  .highlight-card__grid {
+    gap: 0.5rem;
+  }
+
+  .highlight-card__image-grid {
+    height: 70px;
+  }
+
+  .highlight-card__price {
+    font-size: 0.95rem;
   }
 
   /* Slick dot customization */
