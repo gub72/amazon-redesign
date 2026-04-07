@@ -1,58 +1,69 @@
 /* ========================================
-   PRODUCT SHELF GRID — Grid layout with banners
+   PRODUCT SHELF GRID — Gamer Dark Theme
    ======================================== */
+
+.shelf-grid-eletronicos-container {
+  background-color: #0f1111;
+  /* Amazon deep dark */
+  width: 100%;
+  padding: 2.5rem 0;
+  margin: 2rem 0;
+}
 
 .shelf-grid {
   background: transparent;
-  border-radius: 4px;
-  padding: 1rem 1.25rem 1.25rem;
-  margin: 0 auto 1rem;
+  padding: 0 1.25rem;
+  margin: 0 auto;
   max-width: 1400px;
 }
 
-/* ── Header ── */
+/* ── Header Dark ── */
 .shelf-grid__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.85rem;
+  margin-bottom: 1.2rem;
   padding-bottom: 0.5rem;
 }
 
 .shelf-grid__title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 102, 4, 0.2);
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .shelf-grid__see-all {
-  font-size: 0.85rem;
-  color: var(--color-link);
+  font-size: 0.9rem;
+  color: #ff6b00;
+  /* Cyan highlight */
   text-decoration: none;
-  white-space: nowrap;
+  font-weight: 600;
+  transition: color 0.2s;
 }
 
 .shelf-grid__see-all:hover {
-  text-decoration: underline;
-}
-
-/* ── Mobile hidden by default ── */
-.shelf-grid__mobile {
-  display: none;
+  color: #ffffff;
 }
 
 /* ── Desktop layout ── */
 .shelf-grid__desktop {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.5rem;
 }
 
-/* Full-width banner */
+.shelf-grid__desktop .shelf-grid__banner-full {
+  margin-top: -100px;
+  margin-bottom: -88px;
+}
+
+/* Banner Styling */
 .shelf-grid__banner-full {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -61,83 +72,104 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 8px;
 }
 
-/* Product row — 5 columns grid */
+/* Desktop Grid */
 .shelf-grid__products-row {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
-/* Banners row — 3 equal banners */
 .shelf-grid__banners-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .shelf-grid__banner-item {
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
-/* ── Banner Carousel (mobile only) ── */
+.shelf-grid__banner-item:hover {
+  transform: scale(1.02);
+}
+
+/* ── DARK CARDS OVERRIDES ── */
+.shelf-grid-eletronicos-container .plp__card {
+  background: #1c1c1c;
+  border-color: #333;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shelf-grid-eletronicos-container .plp__card:hover {
+  border-color: #ff6604;
+  box-shadow: 0 0 25px rgba(255, 102, 4, 0.2);
+  transform: translateY(-8px);
+}
+
+.shelf-grid-eletronicos-container .plp__card-img-wrap {
+  background: #252525;
+}
+
+.shelf-grid-eletronicos-container .plp__card-title,
+.shelf-grid-eletronicos-container .plp__price-main,
+.shelf-grid-eletronicos-container .plp__price-sym,
+.shelf-grid-eletronicos-container .plp__price-dec {
+  color: #ffffff;
+}
+
+.shelf-grid-eletronicos-container .plp__card-brand {
+  color: #888;
+}
+
+/* ── MOBILE DARK ── */
+.shelf-grid-eletronicos-container .shelf-grid__mobile {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.shelf-grid-eletronicos-container .shelf-grid__products-grid-mobile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+/* Mobile Banner Carousel */
 .shelf-grid__banner-carousel {
   position: relative;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-}
-
-.shelf-grid__carousel-track {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3.5 / 1;
-}
-
-.shelf-grid__carousel-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
-.shelf-grid__carousel-slide--active {
-  opacity: 1;
-  pointer-events: auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 .shelf-grid__carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 6px;
-  padding: 8px 0 4px;
+  gap: 8px;
+  padding: 12px 0 4px;
 }
 
 .shelf-grid__dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
   border: none;
-  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
   cursor: pointer;
-  padding: 0;
-  transition: background 0.3s, transform 0.3s;
+  transition: all 0.3s;
 }
 
-.shelf-grid__dot--active {
+.shelf-grid-eletronicos-container .shelf-grid__dot--active {
   background: #ff6604;
-  transform: scale(1.35);
-}
-
-/* ── Mobile product grid ── */
-.shelf-grid__products-grid-mobile {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  transform: scale(1.4);
+  box-shadow: 0 0 10px #ff6604;
 }
 
 /* ══════════════════════════════
@@ -154,39 +186,23 @@
   .shelf-grid__products-row {
     grid-template-columns: repeat(4, 1fr);
   }
-
-  .shelf-grid__title {
-    font-size: 1.05rem;
-  }
 }
 
 @media screen and (max-width: 768px) {
-  .shelf-grid {
-    margin: 0 0 0.5rem;
-    padding: 0.75rem 0.75rem 1rem;
-    border-radius: 0;
+  .shelf-grid-eletronicos-container {
+    padding: 1.5rem 0;
+    margin: 1rem 0;
   }
 
-  /* Hide desktop, show mobile */
-  .shelf-grid__desktop {
+  .shelf-grid {
+    padding: 0 0.75rem;
+  }
+
+  .shelf-grid-eletronicos-container .shelf-grid__desktop {
     display: none !important;
   }
 
-  .shelf-grid__mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .shelf-grid__title {
-    font-size: 0.95rem;
-  }
-
-  .shelf-grid__see-all {
-    font-size: 0.78rem;
-  }
-
-  .shelf-grid__banner-img {
-    border-radius: 6px;
+  .shelf-grid-eletronicos-container .shelf-grid__mobile {
+    display: flex !important;
   }
 }

@@ -576,18 +576,6 @@ const productsData = [
     rating: 4.5,
   },
   {
-    id: 149,
-    name: "Portable Power Bank",
-    description: "Anker PowerCore 10000 Portable Charger, 10000mAh Power Bank",
-    oldPrice: 29.99,
-    price: 24.99,
-    brand: "Anker",
-    image: "https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&cs=tinysrgb&w=600",
-    isNew: true,
-    category: "Electronics",
-    rating: 4.5,
-  },
-  {
     id: 150,
     name: "Backpack Cooler",
     description: "Igloo MaxCold Backpack Cooler, 24-Can Capacity, Black",

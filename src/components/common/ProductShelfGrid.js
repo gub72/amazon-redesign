@@ -75,9 +75,8 @@ function BannerCarousel({ banners }) {
         {banners.map((src, i) => (
           <div
             key={i}
-            className={`shelf-grid__carousel-slide ${
-              i === active ? "shelf-grid__carousel-slide--active" : ""
-            }`}
+            className={`shelf-grid__carousel-slide ${i === active ? "shelf-grid__carousel-slide--active" : ""
+              }`}
           >
             <img
               src={src}
@@ -92,9 +91,8 @@ function BannerCarousel({ banners }) {
         {banners.map((_, i) => (
           <button
             key={i}
-            className={`shelf-grid__dot ${
-              i === active ? "shelf-grid__dot--active" : ""
-            }`}
+            className={`shelf-grid__dot ${i === active ? "shelf-grid__dot--active" : ""
+              }`}
             onClick={() => goTo(i)}
             aria-label={`Ir para banner ${i + 1}`}
           />
@@ -112,82 +110,84 @@ function ProductShelfGrid({ title, products, linkTo }) {
   const remainingProducts = products.slice(6);
 
   return (
-    <section className="shelf-grid" id="shelf-grid-eletronicos">
-      {/* Header */}
-      <div className="shelf-grid__header">
-        <h2 className="shelf-grid__title">{title}</h2>
-        {linkTo && (
-          <Link to={linkTo} className="shelf-grid__see-all">
-            Confira mais →
-          </Link>
-        )}
-      </div>
-
-      {/* ═══════════════ DESKTOP LAYOUT ═══════════════ */}
-      <div className="shelf-grid__desktop">
-        {/* Banner 1 — full width */}
-        <div className="shelf-grid__banner-full">
-          <img
-            src={SHELF_BANNERS.main}
-            alt="Banner promocional principal"
-            className="shelf-grid__banner-img"
-          />
+    <section className="shelf-grid-eletronicos-container">
+      <div className="shelf-grid" id="shelf-grid-eletronicos">
+        {/* Header */}
+        <div className="shelf-grid__header">
+          <h2 className="shelf-grid__title">{title}</h2>
+          {linkTo && (
+            <Link to={linkTo} className="shelf-grid__see-all">
+              Confira mais →
+            </Link>
+          )}
         </div>
 
-        {/* First row of products */}
-        <div className="shelf-grid__products-row">
-          {firstRow.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+        {/* ═══════════════ DESKTOP LAYOUT ═══════════════ */}
+        <div className="shelf-grid__desktop">
+          {/* Banner 1 — full width */}
+          <div className="shelf-grid__banner-full">
+            <img
+              src={SHELF_BANNERS.main}
+              alt="Banner promocional principal"
+              className="shelf-grid__banner-img"
+            />
+          </div>
+
+          {/* First row of products */}
+          <div className="shelf-grid__products-row">
+            {firstRow.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+
+          {/* 3 banners side-by-side */}
+          <div className="shelf-grid__banners-row">
+            {SHELF_BANNERS.secondary.map((src, i) => (
+              <div key={i} className="shelf-grid__banner-item">
+                <img
+                  src={src}
+                  alt={`Banner promocional ${i + 1}`}
+                  className="shelf-grid__banner-img"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Remaining products in rows of 5 */}
+          <div className="shelf-grid__products-row">
+            {remainingProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
 
-        {/* 3 banners side-by-side */}
-        <div className="shelf-grid__banners-row">
-          {SHELF_BANNERS.secondary.map((src, i) => (
-            <div key={i} className="shelf-grid__banner-item">
-              <img
-                src={src}
-                alt={`Banner promocional ${i + 1}`}
-                className="shelf-grid__banner-img"
-              />
-            </div>
-          ))}
-        </div>
+        {/* ═══════════════ MOBILE LAYOUT ═══════════════ */}
+        <div className="shelf-grid__mobile">
+          {/* Banner 1 — full width */}
+          <div className="shelf-grid__banner-full">
+            <img
+              src={SHELF_BANNERS.main}
+              alt="Banner promocional principal"
+              className="shelf-grid__banner-img"
+            />
+          </div>
 
-        {/* Remaining products in rows of 5 */}
-        <div className="shelf-grid__products-row">
-          {remainingProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </div>
+          {/* First row of products (2 cols) */}
+          <div className="shelf-grid__products-grid-mobile">
+            {firstRow.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
 
-      {/* ═══════════════ MOBILE LAYOUT ═══════════════ */}
-      <div className="shelf-grid__mobile">
-        {/* Banner 1 — full width */}
-        <div className="shelf-grid__banner-full">
-          <img
-            src={SHELF_BANNERS.main}
-            alt="Banner promocional principal"
-            className="shelf-grid__banner-img"
-          />
-        </div>
+          {/* Banner carousel — swipe, dots, no arrows */}
+          <BannerCarousel banners={SHELF_BANNERS.secondary} />
 
-        {/* First row of products (2 cols) */}
-        <div className="shelf-grid__products-grid-mobile">
-          {firstRow.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-
-        {/* Banner carousel — swipe, dots, no arrows */}
-        <BannerCarousel banners={SHELF_BANNERS.secondary} />
-
-        {/* Remaining products (2 cols) */}
-        <div className="shelf-grid__products-grid-mobile">
-          {remainingProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {/* Remaining products (2 cols) */}
+          <div className="shelf-grid__products-grid-mobile">
+            {remainingProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
