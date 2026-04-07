@@ -6,6 +6,7 @@ import ProductShelf from "../common/ProductShelf";
 import ProductShelfGrid from "../common/ProductShelfGrid";
 import ProductShelfBanner from "../common/ProductShelfBanner";
 import ProductShelfGridFashion from "../common/ProductShelfGridFashion";
+import HighlightCards from "../common/HighlightCards";
 import productsData from "../../data/products";
 
 /* Category label mapping */
@@ -16,6 +17,15 @@ const CATEGORY_LABELS = {
   "Home Decoration": "Casa e Decoração",
   Equipments: "Equipamentos",
 };
+
+/* Custom order for categories */
+const CATEGORY_ORDER = [
+  "Home Decoration",
+  "Electronics",
+  "Fashion",
+  "Equipments",
+  "Beauty Product",
+];
 
 /* Categories that should use the grid-with-banners layout (Eletrônicos) */
 const GRID_CATEGORIES = ["Electronics"];
@@ -49,22 +59,44 @@ function Home() {
       grouped[cat].push(product);
     });
 
-    return Object.entries(grouped).map(([category, products]) => ({
-      category,
-      title: CATEGORY_LABELS[category] || `Best Sellers em ${category}`,
-      products,
-      linkTo: `/search?q=${encodeURIComponent(category)}`,
-    }));
+    return Object.entries(grouped)
+      .map(([category, products]) => ({
+        category,
+        title: CATEGORY_LABELS[category] || `Best Sellers em ${category}`,
+        products,
+        linkTo: `/search?q=${encodeURIComponent(category)}`,
+      }))
+      .sort((a, b) => {
+        const indexA = CATEGORY_ORDER.indexOf(a.category);
+        const indexB = CATEGORY_ORDER.indexOf(b.category);
+        return (indexA === -1 ? 99 : indexA) - (indexB === -1 ? 99 : indexB);
+      });
   }, []);
 
   return (
     <div className="home">
       <div className="home__container">
         <HeroSlider />
+        <HighlightCards />
         <BannerCategory />
 
         {/* Category Shelves */}
         {shelves.map((shelf) => {
+          /* Casa e Decoração → banner + 6×2 product grid */
+          if (BANNER_CATEGORIES[shelf.category]) {
+            const cfg = BANNER_CATEGORIES[shelf.category];
+            return (
+              <ProductShelfBanner
+                key={shelf.category}
+                title={shelf.title}
+                products={shelf.products.slice(0, cfg.maxProducts)}
+                linkTo={shelf.linkTo}
+                bannerSrc={cfg.bannerSrc}
+                bannerAlt={cfg.bannerAlt}
+              />
+            );
+          }
+
           /* Eletrônicos → grid with interspersed banners */
           if (GRID_CATEGORIES.includes(shelf.category)) {
             return (
@@ -87,21 +119,6 @@ function Home() {
                 products={shelf.products.slice(0, 12)}
                 linkTo={shelf.linkTo}
                 banners={cfg.banners}
-              />
-            );
-          }
-
-          /* Casa e Decoração → banner + 6×2 product grid */
-          if (BANNER_CATEGORIES[shelf.category]) {
-            const cfg = BANNER_CATEGORIES[shelf.category];
-            return (
-              <ProductShelfBanner
-                key={shelf.category}
-                title={shelf.title}
-                products={shelf.products.slice(0, cfg.maxProducts)}
-                linkTo={shelf.linkTo}
-                bannerSrc={cfg.bannerSrc}
-                bannerAlt={cfg.bannerAlt}
               />
             );
           }

@@ -27,7 +27,11 @@ function ProductCard({ product }) {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.3 }}
     >
-      <Link to={`/product/${id}`} className="plp__card-link">
+      <Link 
+        to={`/product/${id}`} 
+        className="plp__card-link"
+        onClick={() => localStorage.setItem('amazon_last_viewed_id', id)}
+      >
         <div className="plp__card-img-wrap">
           <img
             src={image}

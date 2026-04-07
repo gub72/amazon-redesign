@@ -116,7 +116,6 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  min-height: 420px;
   cursor: crosshair;
   position: relative;
   overflow: hidden;
