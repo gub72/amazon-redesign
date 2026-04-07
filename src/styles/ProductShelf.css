@@ -34,7 +34,7 @@
 /* ── Static Grid (≤5 products) ── */
 .shelf__grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 0.75rem;
   padding-top: 6px;
 }
@@ -98,13 +98,13 @@
 
 @media screen and (max-width: 1200px) {
   .shelf__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
 @media screen and (max-width: 992px) {
   .shelf__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .shelf__title {

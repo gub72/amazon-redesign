@@ -1,0 +1,192 @@
+/* ========================================
+   PRODUCT SHELF GRID — Grid layout with banners
+   ======================================== */
+
+.shelf-grid {
+  background: transparent;
+  border-radius: 4px;
+  padding: 1rem 1.25rem 1.25rem;
+  margin: 0 auto 1rem;
+  max-width: 1400px;
+}
+
+/* ── Header ── */
+.shelf-grid__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.5rem;
+}
+
+.shelf-grid__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.shelf-grid__see-all {
+  font-size: 0.85rem;
+  color: var(--color-link);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.shelf-grid__see-all:hover {
+  text-decoration: underline;
+}
+
+/* ── Mobile hidden by default ── */
+.shelf-grid__mobile {
+  display: none;
+}
+
+/* ── Desktop layout ── */
+.shelf-grid__desktop {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Full-width banner */
+.shelf-grid__banner-full {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.shelf-grid__banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Product row — 5 columns grid */
+.shelf-grid__products-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+}
+
+/* Banners row — 3 equal banners */
+.shelf-grid__banners-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.shelf-grid__banner-item {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ── Banner Carousel (mobile only) ── */
+.shelf-grid__banner-carousel {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.shelf-grid__carousel-track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3.5 / 1;
+}
+
+.shelf-grid__carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.shelf-grid__carousel-slide--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.shelf-grid__carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0 4px;
+}
+
+.shelf-grid__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.shelf-grid__dot--active {
+  background: #ff6604;
+  transform: scale(1.35);
+}
+
+/* ── Mobile product grid ── */
+.shelf-grid__products-grid-mobile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+/* ══════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════ */
+
+@media screen and (max-width: 1200px) {
+  .shelf-grid__products-row {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .shelf-grid__products-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .shelf-grid__title {
+    font-size: 1.05rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .shelf-grid {
+    margin: 0 0 0.5rem;
+    padding: 0.75rem 0.75rem 1rem;
+    border-radius: 0;
+  }
+
+  /* Hide desktop, show mobile */
+  .shelf-grid__desktop {
+    display: none !important;
+  }
+
+  .shelf-grid__mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .shelf-grid__title {
+    font-size: 0.95rem;
+  }
+
+  .shelf-grid__see-all {
+    font-size: 0.78rem;
+  }
+
+  .shelf-grid__banner-img {
+    border-radius: 6px;
+  }
+}

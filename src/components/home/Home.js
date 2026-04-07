@@ -3,6 +3,7 @@ import "../../styles/Home.css";
 import HeroSlider from "../../components/BannerMain/Slider";
 import BannerCategory from "../BannerCategory/index";
 import ProductShelf from "../common/ProductShelf";
+import ProductShelfGrid from "../common/ProductShelfGrid";
 import productsData from "../../data/products";
 
 /* Category label mapping */
@@ -13,6 +14,9 @@ const CATEGORY_LABELS = {
   "Home Decoration": "Casa e Decoração",
   Equipments: "Equipamentos",
 };
+
+/* Categories that should use the grid-with-banners layout */
+const GRID_CATEGORIES = ["Electronics"];
 
 function Home() {
   /* Group products by category */
@@ -39,14 +43,23 @@ function Home() {
         <BannerCategory />
 
         {/* Category Shelves */}
-        {shelves.map((shelf) => (
-          <ProductShelf
-            key={shelf.category}
-            title={shelf.title}
-            products={shelf.products}
-            linkTo={shelf.linkTo}
-          />
-        ))}
+        {shelves.map((shelf) =>
+          GRID_CATEGORIES.includes(shelf.category) ? (
+            <ProductShelfGrid
+              key={shelf.category}
+              title={shelf.title}
+              products={shelf.products}
+              linkTo={shelf.linkTo}
+            />
+          ) : (
+            <ProductShelf
+              key={shelf.category}
+              title={shelf.title}
+              products={shelf.products}
+              linkTo={shelf.linkTo}
+            />
+          )
+        )}
       </div>
     </div>
   );

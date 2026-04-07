@@ -33,24 +33,24 @@ function ShelfNextArrow({ onClick }) {
 function ProductShelf({ title, products, linkTo }) {
   if (!products || products.length === 0) return null;
 
-  const needsSlider = products.length > 5;
+  const needsSlider = products.length > 6;
 
   const sliderSettings = {
     dots: false,
     infinite: false,
     speed: 400,
-    slidesToShow: 5,
-    slidesToScroll: 2,
+    slidesToShow: 6,
+    slidesToScroll: 3,
     prevArrow: <ShelfPrevArrow />,
     nextArrow: <ShelfNextArrow />,
     responsive: [
       {
         breakpoint: 1200,
-        settings: { slidesToShow: 4, slidesToScroll: 2 },
+        settings: { slidesToShow: 5, slidesToScroll: 2 },
       },
       {
         breakpoint: 992,
-        settings: { slidesToShow: 3, slidesToScroll: 1 },
+        settings: { slidesToShow: 4, slidesToScroll: 2 },
       },
       {
         breakpoint: 768,
