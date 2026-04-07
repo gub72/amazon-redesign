@@ -1,22 +1,15 @@
 /* ========================================
-   PRODUCT SHELF BANNER — Transparent Theme
+   PRODUCT SHELF GRID FASHION — Transparent Theme
    ======================================== */
 
-.shelf-banner {
+.shelf-fashion {
   background-color: transparent;
   width: 100%;
   padding: 2.5rem 0;
   margin: 1rem 0;
 }
 
-.shelf-banner__inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
-}
-
-/* ── Header ── */
-.shelf-banner__header {
+.shelf-fashion__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,7 +20,7 @@
   margin-right: auto;
 }
 
-.shelf-banner__title {
+.shelf-fashion__title {
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--text-primary);
@@ -35,7 +28,7 @@
   letter-spacing: -0.02em;
 }
 
-.shelf-banner__see-all {
+.shelf-fashion__see-all {
   font-size: 0.9rem;
   color: #ff6b00;
   text-decoration: none;
@@ -46,36 +39,41 @@
   gap: 0.3rem;
 }
 
-.shelf-banner__see-all:hover {
+.shelf-fashion__see-all:hover {
   color: var(--text-accent);
   gap: 0.5rem;
 }
 
-/* ── Banner Image ── */
-.shelf-banner__image-wrap {
-  width: 100%;
+/* ── Banner Row ── */
+.shelf-fashion__banners-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
   max-width: 1400px;
-  margin: 0 auto 1.5rem;
+  margin: 1.5rem auto;
   padding: 0 1.25rem;
+}
+
+.shelf-fashion__banner-item {
   border-radius: 12px;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease;
 }
 
-.shelf-banner__image {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.shelf-banner__image-wrap:hover .shelf-banner__image {
+.shelf-fashion__banner-item:hover {
   transform: scale(1.01);
 }
 
+.shelf-fashion__banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
 /* ── Products Grid — 6 per row ── */
-.shelf-banner__grid {
+.shelf-fashion__grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
@@ -84,45 +82,41 @@
   padding: 0 1.25rem;
 }
 
-/* DARK CARD OVERRIDES REMOVED — Using default card theme */
-
 /* ══════════════════════════════
    RESPONSIVE
    ══════════════════════════════ */
 
 @media screen and (max-width: 1200px) {
-  .shelf-banner__grid {
+  .shelf-fashion__grid {
     grid-template-columns: repeat(5, 1fr);
   }
 }
 
 @media screen and (max-width: 992px) {
-  .shelf-banner__grid {
+  .shelf-fashion__grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .shelf-banner {
+  .shelf-fashion {
     padding: 1.5rem 0;
     margin: 1rem 0;
   }
 
-  .shelf-banner__header {
+  .shelf-fashion__banners-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
     padding: 0 0.75rem;
   }
 
-  .shelf-banner__image-wrap {
-    padding: 0 0.75rem;
-  }
-
-  .shelf-banner__grid {
+  .shelf-fashion__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
     padding: 0 0.75rem;
   }
 
-  .shelf-banner__title {
+  .shelf-fashion__title {
     font-size: 1.25rem;
   }
 }

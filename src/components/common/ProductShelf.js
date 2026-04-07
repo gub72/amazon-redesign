@@ -63,7 +63,7 @@ function ProductShelf({ title, products, linkTo }) {
     <section className="shelf">
       {/* Header */}
       <div className="shelf__header">
-        <h2 className="shelf__title">{title}</h2>
+        <h2 className="shelf-banner__title">{title}</h2>
         {linkTo && (
           <Link to={linkTo} className="shelf__see-all">
             Confira mais →

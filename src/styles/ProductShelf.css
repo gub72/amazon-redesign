@@ -19,7 +19,7 @@
   padding-bottom: 0.5rem;
 }
 
-.shelf__title {
+.shelf-banner__title {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -107,7 +107,7 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .shelf__title {
+  .shelf-banner__title {
     font-size: 1.05rem;
   }
 }
@@ -132,7 +132,7 @@
     padding-top: 6px;
   }
 
-  .shelf__title {
+  .shelf-banner__title {
     font-size: 0.95rem;
   }
 
