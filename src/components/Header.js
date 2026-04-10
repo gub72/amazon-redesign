@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../styles/Header.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { AiOutlineSearch, AiOutlineRight } from "react-icons/ai";
 import { MdPersonOutline } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
@@ -10,6 +10,7 @@ import { auth } from "../config/firebase";
 import MenuDesktop from "../components/header/MenuDesktop";
 import LoginContainer from "./auth/LoginContainer";
 import useDarkMode from "../hooks/useDarkMode";
+import productsData from "../data/products";
 import "../styles/LoginModal.css";
 
 function Header() {
@@ -22,13 +23,49 @@ function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
+  const [searchParams] = useSearchParams();
+  const categoryParam = searchParams.get("c");
+  const [selectedCategory, setSelectedCategory] = useState(categoryParam || "Todos");
+
+  useEffect(() => {
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    } else {
+      setSelectedCategory("Todos");
+    }
+  }, [categoryParam]);
+  const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
+  const dropdownRef = useRef(null);
   const { theme, toggle: toggleTheme } = useDarkMode();
+
+  const categories = ["Todos", ...new Set(productsData.map((p) => p.category))];
+  const categoryMap = {
+    Electronics: "Eletrônicos",
+    "Home Decoration": "Casa e Decoração",
+    Fashion: "Moda",
+    Equipments: "Equipamentos",
+    "Beauty Product": "Beleza",
+    Todos: "Todos",
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowCategoryDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleSearch = () => {
     const q = searchQuery.trim();
+    const cat = selectedCategory !== "Todos" ? `&c=${encodeURIComponent(selectedCategory)}` : "";
     if (q) {
-      navigate(`/search?q=${encodeURIComponent(q)}`);
+      navigate(`/search?q=${encodeURIComponent(q)}${cat}`);
       setShowMobileSearch(false);
+    } else if (selectedCategory !== "Todos") {
+      navigate(`/search?c=${encodeURIComponent(selectedCategory)}`);
     } else {
       navigate("/search");
     }
@@ -93,12 +130,49 @@ function Header() {
         {/* Desktop Search */}
         <div className="header__search header__search--desktop mobile-hidden">
           <label htmlFor="product-search" className="visually-hidden">Search</label>
-          <button className="header__searchFilter--desktop" aria-label="Search products">
-            <span className="header__searchFilter__text">Todos</span>
-            <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg" className="header__searchFilter__icon">
-              <path d="M7.50791 0.462579L3.97664 4.13008C3.92698 4.18159 3.85966 4.21053 3.78948 4.21053C3.7193 4.21053 3.65198 4.18159 3.60233 4.13008L0.0710812 0.462579C0.024299 0.410437 -0.00116933 0.341471 4.12618e-05 0.270211C0.00125185 0.19895 0.0290469 0.130961 0.0775707 0.0805645C0.126094 0.030168 0.191559 0.00130015 0.260171 4.28533e-05C0.328784 -0.00121445 0.395188 0.025237 0.445393 0.073824L3.60233 0.0805645L7.13358 0.073824C7.18379 0.025237 7.25017 -0.00121445 7.31879 4.28533e-05C7.38742 0.00130015 7.45284 0.030168 7.5014 0.0805645C7.54989 0.130961 7.57772 0.19895 7.5789 0.270211C7.58015 0.341471 7.55469 0.410437 7.50791 0.462579Z" fill="#656565" />
-            </svg>
-          </button>
+          <div className="header__searchFilterContainer" ref={dropdownRef}>
+            <button
+              className="header__searchFilter--desktop"
+              aria-label="Search products"
+              onClick={() => setShowCategoryDropdown(!showCategoryDropdown)}
+            >
+              <span className="header__searchFilter__text">
+                {categoryMap[selectedCategory] || selectedCategory}
+              </span>
+              <svg
+                width="8"
+                height="5"
+                viewBox="0 0 8 5"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={`header__searchFilter__icon ${showCategoryDropdown ? "header__searchFilter__icon--open" : ""}`}
+              >
+                <path
+                  d="M7.50791 0.462579L3.97664 4.13008C3.92698 4.18159 3.85966 4.21053 3.78948 4.21053C3.7193 4.21053 3.65198 4.18159 3.60233 4.13008L0.0710812 0.462579C0.024299 0.410437 -0.00116933 0.341471 4.12618e-05 0.270211C0.00125185 0.19895 0.0290469 0.130961 0.0775707 0.0805645C0.126094 0.030168 0.191559 0.00130015 0.260171 4.28533e-05C0.328784 -0.00121445 0.395188 0.025237 0.445393 0.073824L3.60233 0.0805645L7.13358 0.073824C7.18379 0.025237 7.25017 -0.00121445 7.31879 4.28533e-05C7.38742 0.00130015 7.45284 0.030168 7.5014 0.0805645C7.54989 0.130961 7.57772 0.19895 7.5789 0.270211C7.58015 0.341471 7.55469 0.410437 7.50791 0.462579Z"
+                  fill="#656565"
+                />
+              </svg>
+            </button>
+            {showCategoryDropdown && (
+              <>
+                <div className="popover-backdrop" onClick={() => setShowCategoryDropdown(false)} style={{ zIndex: 1000 }} />
+                <ul className="header__searchDropdown">
+                  {categories.map((cat) => (
+                    <li
+                      key={cat}
+                      className={`header__searchDropdownItem ${selectedCategory === cat ? "header__searchDropdownItem--active" : ""}`}
+                      onClick={() => {
+                        setSelectedCategory(cat);
+                        setShowCategoryDropdown(false);
+                      }}
+                    >
+                      {categoryMap[cat] || cat}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
           <input
             id="product-search"
             type="text"
@@ -109,17 +183,7 @@ function Header() {
             placeholder="Pesquisar Amazon.com.br"
           />
           <button className="header__searchIcon header__searchIcon--desktop" aria-label="Search products" onClick={handleSearch}>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clipPath="url(#clip0_10703_248)">
-                <path fillRule="evenodd" clipRule="evenodd" d="M5.33844 1.74882C3.35593 1.74882 1.74879 3.35596 1.74879 5.33847C1.74879 7.32098 3.35593 8.92812 5.33844 8.92812C7.32095 8.92812 8.92809 7.32098 8.92809 5.33847C8.92809 3.35596 7.32095 1.74882 5.33844 1.74882ZM1.19653 5.33847C1.19653 3.05096 3.05093 1.19656 5.33844 1.19656C7.62595 1.19656 9.48034 3.05096 9.48034 5.33847C9.48034 7.62598 7.62595 9.48037 5.33844 9.48037C3.05093 9.48037 1.19653 7.62598 1.19653 5.33847Z" fill="#ffffff" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M7.87684 7.8769C7.98467 7.76906 8.1595 7.76906 8.26734 7.8769L10.504 10.1135C10.6118 10.2214 10.6118 10.3962 10.504 10.504C10.3961 10.6119 10.2213 10.6119 10.1135 10.504L7.87684 8.2674C7.769 8.15956 7.769 7.98473 7.87684 7.8769Z" fill="#ffffff" />
-              </g>
-              <defs>
-                <clipPath id="clip0_10703_248">
-                  <rect width="11.7814" height="11.7814" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+            <AiOutlineSearch style={{ fontSize: "18px", color: "#fff" }} />
           </button>
         </div>
 

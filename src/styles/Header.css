@@ -33,21 +33,82 @@
   flex: 1;
   align-items: center;
   border-radius: 4px;
-  overflow: hidden;
-  /* Ensures border-radius applies to children */
-  background-color: var(--bg-input);
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .header__search {
+    height: 39px;
+  }
+}
+
+
+.header__searchFilterContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-radius: 4px 0 0 4px;
 }
 
 .header__searchFilter--desktop {
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border);
-  padding: 8px 12px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 5px 12px;
   display: flex;
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  border-right: 1px solid var(--border);
 }
+
+.header__searchFilter__icon {
+  transition: transform 0.2s ease;
+}
+
+.header__searchFilter__icon--open {
+  transform: rotate(180deg);
+}
+
+.header__searchDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background-color: var(--bg-secondary);
+  width: max-content;
+  min-width: 180px;
+  max-height: 400px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0 0 5px;
+  margin: 0;
+  z-index: 2000;
+  /* Above backdrop */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.header__searchDropdownItem {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.header__searchDropdownItem:hover {
+  background-color: var(--bg-header-bottom);
+  color: #ff6200;
+}
+
+.header__searchDropdownItem--active {
+  background-color: #ff6200 !important;
+  color: white !important;
+}
+
 
 .header__searchFilter__text {
   font-size: 13px;
@@ -56,8 +117,8 @@
 
 .header__searchInput {
   flex: 1;
-  height: 40px;
-  padding: 10px;
+  height: 100%;
+  padding: 0 10px;
   border: none;
   outline: none;
   font-size: 14px;
@@ -78,7 +139,7 @@
 }
 
 .header__searchIcon:hover {
-  background-color: #f3a847;
+  background-color: #9f3d00;
 }
 
 /* Desktop Nav */

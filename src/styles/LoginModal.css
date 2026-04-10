@@ -1,33 +1,164 @@
+/* ═══════════════════════════════════════════
+   LOGIN POPOVER — Desktop dropdown
+   ═══════════════════════════════════════════ */
 .login-popover {
   position: absolute;
-  top: 100%;
-  right: 0;
-  background: white;
-  padding: 1.5em;
-  border-radius: 4px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  top: calc(100% + 6px);
+  right: -20px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
   z-index: 1001;
-  min-width: 450px; /* Increased for two columns */
-  margin-top: 10px;
-  animation: fadeInDown 0.2s ease-out;
+  min-width: 460px;
+  animation: fadeInDown 0.22s ease-out;
   color: var(--text-primary);
+  overflow: hidden;
 }
 
 .login-popover::before {
   content: '';
   position: absolute;
-  top: -10px;
-  right: 20px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid white;
+  top: -8px;
+  right: 32px;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 8px solid var(--bg-card);
 }
 
+/* ─── Logged-in content ─── */
 .login-popover__content {
   display: flex;
   flex-direction: column;
 }
 
+/* User banner at top */
+.login-popover__userBanner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--bg-header-bottom);
+  color: #fff;
+}
+
+.login-popover__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6200, #ff8c38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.login-popover__userInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.login-popover__userName {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.login-popover__userEmail {
+  font-size: 12px;
+  opacity: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Columns */
+.login-popover__columns {
+  display: flex;
+  padding: 16px 20px;
+  gap: 0;
+}
+
+.login-popover__column {
+  flex: 1;
+  padding: 0 12px;
+}
+
+.login-popover__column:first-child {
+  padding-left: 0;
+}
+
+.login-popover__column:last-child {
+  padding-right: 0;
+}
+
+.login-popover__column h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.login-popover__column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.login-popover__column ul li {
+  margin-bottom: 4px;
+}
+
+.login-popover__column ul li a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  display: block;
+  padding: 3px 0;
+  transition: color var(--transition-fast);
+}
+
+.login-popover__column ul li a:hover {
+  text-decoration: underline;
+  color: #c45500;
+}
+
+.login-popover__separator {
+  width: 1px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* Footer with logout */
+.login-popover__footer {
+  border-top: 1px solid var(--border);
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.login-popover__logout-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 7px 24px;
+  font-size: 13px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.login-popover__logout-btn:hover {
+  background: var(--bg-primary);
+  border-color: var(--text-secondary);
+}
+
+/* ─── Logged-out: popover CTA + form ─── */
 .login-popover__top {
   display: flex;
   flex-direction: column;
@@ -46,7 +177,7 @@
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  box-shadow: 0 1px 0 rgba(255,255,255,.4) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset;
   margin-bottom: 5px;
 }
 
@@ -57,7 +188,7 @@
 .login-popover__link-btn {
   background: none;
   border: none;
-  color: #0066c0;
+  color: #c45500;
   cursor: pointer;
   text-decoration: none;
   font-size: 13px;
@@ -71,107 +202,90 @@
 
 .login-popover__separator-full {
   height: 1px;
-  background: #eee;
+  background: var(--border);
   margin: 0 -1.5em 1em;
 }
 
-.login-popover__columns {
+/* ─── Logged-out: header ─── */
+.login-popover__header {
   display: flex;
   justify-content: space-between;
-}
-
-.login-popover__column {
-  flex: 1;
-  padding: 0 1em;
-}
-
-.login-popover__column h4 {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.login-popover__column ul {
-  list-style: none;
-  padding: 0;
-}
-
-.login-popover__column ul li {
-  margin-bottom: 6px;
-}
-
-.login-popover__column ul li a {
-  color: #333;
-  text-decoration: none;
-  font-size: 13px;
-}
-
-.login-popover__column ul li a:hover {
-  text-decoration: underline;
-  color: #c45500;
-}
-
-.login-popover__separator {
-  width: 1px;
-  background: #eee;
-}
-
-.login-popover__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1em;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid #eee;
+  align-items: center;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--border);
 }
 
 .login-popover__header h3 {
-    font-size: 16px;
-    font-weight: 700;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .login-popover__back-btn {
-    margin-top: 15px;
-    padding: 5px 10px;
-    background: #f0f2f2;
-    border: 1px solid #adb1b8;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
+  margin-top: 15px;
+  padding: 5px 10px;
+  background: #f0f2f2;
+  border: 1px solid #adb1b8;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
 }
 
 .login-popover__back-btn:hover {
-    background: #e7e9ec;
+  background: #e7e9ec;
 }
 
-/* Auth form tweaks within popover */
+/* ─── Auth form tweaks within popover ─── */
 .login-popover .login__container {
   border: none;
-  padding: 0;
+  padding: 20px;
   max-width: none;
 }
 
 .login-popover .login__container h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 12px;
 }
 
 .login__terms {
   font-size: 11px;
-  color: #555;
-  margin: 10px 0;
+  color: var(--text-muted);
+  margin: 12px 0 4px;
+  line-height: 1.4;
+}
+
+.login__terms a {
+  color: #c45500;
+  text-decoration: none;
+}
+
+.login__terms a:hover {
+  text-decoration: underline;
+  color: #c45500;
 }
 
 .login__toggle {
-  margin-top: 15px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
   font-size: 13px;
+  text-align: center;
 }
 
+/* ─── Animation ─── */
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* ─── Backdrop ─── */
 .popover-backdrop {
   position: fixed;
   top: 0;

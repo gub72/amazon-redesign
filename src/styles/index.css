@@ -19,11 +19,11 @@
   --text-primary: #0f1111;
   --text-secondary: #494d4d;
   --text-inverse: #ffffff;
-  --text-link: #007185;
+  --text-link: #c45500;
   --text-price: #0f1111;
   --text-accent: #c45500;
   --text-success: #067d62;
-  --text-muted: #6b7280;
+  --text-muted: #262626;
 
   --accent: #ff6b00;
   --accent-hover: #e65c00;
@@ -147,15 +147,6 @@ picture {
 }
 
 /* ═══════════════════════════════════════════
-   FOCUS STYLES — Accessibility
-   ═══════════════════════════════════════════ */
-:focus-visible {
-  outline: 2px solid var(--border-focus);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
-/* ═══════════════════════════════════════════
    SKIP LINK — Accessibility
    ═══════════════════════════════════════════ */
 .skip-link {
@@ -195,7 +186,9 @@ picture {
 }
 
 @keyframes progressFill {
-  to { width: 100%; }
+  to {
+    width: 100%;
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -229,9 +222,9 @@ picture {
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
@@ -268,7 +261,7 @@ picture {
   margin: -1px;
   border: 0;
   padding: 0;
-  
+
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);

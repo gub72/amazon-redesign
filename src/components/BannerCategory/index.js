@@ -9,8 +9,8 @@ const BannerCategory = () => {
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 2,
+        slidesToShow: 3,
+        slidesToScroll: 3,
         arrows: false,
     };
 
@@ -85,7 +85,7 @@ const BannerCategory = () => {
             <div className="mobile-slider-container">
                 <Slider {...sliderSettings}>
                     {categoryData.map((category) => (
-                        <div key={category.id} className="category-slide" style={{ width: 'auto' }}>
+                        <div key={category.id} className="category-slide">
                             <div className="category-card">
                                 <img
                                     src={category.image}

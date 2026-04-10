@@ -25,7 +25,7 @@ function LoginContainer({ onLoginSuccess, fullPage = false, initialMode = "login
     return String(email)
       .toLowerCase()
       .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        /^(([^<>()[\]\\.,;:\s@"]+(\.([^<>()[\]\\.,;:\s@"]+))*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
   };
 
@@ -35,19 +35,19 @@ function LoginContainer({ onLoginSuccess, fullPage = false, initialMode = "login
     setError(null);
 
     if (!validateEmail(email)) {
-      setError("Please enter a valid email address.");
+      setError("Por favor, insira um e-mail válido.");
       setProcessing(false);
       return;
     }
 
     if (isSigningUp && name.trim().length < 2) {
-      setError("Please enter your name.");
+      setError("Por favor, insira seu nome.");
       setProcessing(false);
       return;
     }
 
     if (password.length < 6) {
-      setError("Password should be at least 6 characters.");
+      setError("A senha deve ter pelo menos 6 caracteres.");
       setProcessing(false);
       return;
     }
@@ -55,7 +55,6 @@ function LoginContainer({ onLoginSuccess, fullPage = false, initialMode = "login
     if (isSigningUp) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          // Update profile with name
           updateProfile(userCredential.user, {
             displayName: name
           }).then(() => {
@@ -98,13 +97,21 @@ function LoginContainer({ onLoginSuccess, fullPage = false, initialMode = "login
     return profile?.email ? profile.email.split("@")[0] : "Usuário";
   };
 
-  // If LOGGED IN: Show the columns of links
+  const getInitials = (profile) => {
+    const name = getUserName(profile);
+    return name.charAt(0).toUpperCase();
+  };
+
+  // ─── LOGGED IN: Account popover with columns ───
   if (profile) {
     return (
       <div className="login-popover__content">
-        <div className="login-popover__header">
-          <h3>Olá, {getUserName(profile)}</h3>
-          <button className="login-popover__link-btn" onClick={handleLogout}>Sair</button>
+        <div className="login-popover__userBanner">
+          <div className="login-popover__avatar">{getInitials(profile)}</div>
+          <div className="login-popover__userInfo">
+            <span className="login-popover__userName">{getUserName(profile)}</span>
+            <span className="login-popover__userEmail">{profile?.email}</span>
+          </div>
         </div>
         <div className="login-popover__columns">
           <div className="login-popover__column">
@@ -112,6 +119,7 @@ function LoginContainer({ onLoginSuccess, fullPage = false, initialMode = "login
             <ul>
               <li><Link to="/lists">Criar uma Lista de desejos</Link></li>
               <li><Link to="/lists">Lista do Bebê</Link></li>
+              <li><Link to="/lists">Descobrir seus interesses</Link></li>
             </ul>
           </div>
           <div className="login-popover__separator" />
@@ -126,29 +134,29 @@ function LoginContainer({ onLoginSuccess, fullPage = false, initialMode = "login
               <li><Link to="/subscribe-and-save">Programe e Poupe</Link></li>
               <li><Link to="/prime">Sua assinatura Prime</Link></li>
               <li><Link to="/subscriptions">Inscrições e assinaturas</Link></li>
-              <li><Link to="/manage-content">Gerencie seu conteúdo e dispositivos</Link></li>
-              <li><Link to="/prime-video">Seu Prime Video</Link></li>
-              <li><Link to="/kindle-unlimited">Seu Kindle Unlimited</Link></li>
-              <li><Link to="/photos">Seu Amazon Photos</Link></li>
-              <li><Link to="/apps">Seus aplicativos e dispositivos</Link></li>
-              <li><button className="login-popover__link-btn" style={{ marginTop: '10px' }} onClick={handleLogout}>Sair da conta</button></li>
+              <li><Link to="/manage-content">Gerencie conteúdo e dispositivos</Link></li>
             </ul>
           </div>
+        </div>
+        <div className="login-popover__footer">
+          <button className="login-popover__logout-btn" onClick={handleLogout}>
+            Sair da conta
+          </button>
         </div>
       </div>
     );
   }
 
-  // If LOGGED OUT: Show only the Login or SignUp form
+  // ─── LOGGED OUT: Login / Signup form ───
   return (
     <div className={fullPage ? "login__container full" : "login__container"}>
-      <h2>{isSigningUp ? "Create Account" : "Sign In"}</h2>
+      <h2>{isSigningUp ? "Criar conta" : "Fazer login"}</h2>
       <form onSubmit={handleAuthAction}>
         {!!error && <p className="login__error">{error}</p>}
 
         {isSigningUp && (
           <>
-            <label htmlFor="login__name">Your name</label>
+            <label htmlFor="login__name">Seu nome</label>
             <input
               type="text"
               id="login__name"
@@ -158,12 +166,12 @@ function LoginContainer({ onLoginSuccess, fullPage = false, initialMode = "login
                 setName(e.target.value);
               }}
               required
-              placeholder="First and last name"
+              placeholder="Nome e sobrenome"
             />
           </>
         )}
 
-        <label htmlFor="login__email">Email address</label>
+        <label htmlFor="login__email">E-mail</label>
         <input
           type="email"
           id="login__email"
@@ -175,7 +183,7 @@ function LoginContainer({ onLoginSuccess, fullPage = false, initialMode = "login
           required
         />
 
-        <label htmlFor="login__password">Password</label>
+        <label htmlFor="login__password">Senha</label>
         <input
           type="password"
           id="login__password"
@@ -185,7 +193,7 @@ function LoginContainer({ onLoginSuccess, fullPage = false, initialMode = "login
             setPassword(e.target.value);
           }}
           required
-          placeholder="At least 6 characters"
+          placeholder="Mínimo de 6 caracteres"
         />
 
         <button
@@ -193,19 +201,26 @@ function LoginContainer({ onLoginSuccess, fullPage = false, initialMode = "login
           className="login__signInButton"
           disabled={processing}
         >
-          {isSigningUp ? "Create your Amazon Clone account" : "Sign In"}
+          {processing
+            ? "Carregando..."
+            : isSigningUp
+              ? "Criar sua conta"
+              : "Continuar"
+          }
         </button>
       </form>
 
       <p className="login__terms">
-        By {isSigningUp ? "creating an account" : "continuing"}, you agree to Charles' Amazon Clone Conditions of Use and Privacy Notice.
+        Ao {isSigningUp ? "criar uma conta" : "continuar"}, você concorda com as{" "}
+        <Link to="/terms">Condições de Uso</Link> e o{" "}
+        <Link to="/privacy">Aviso de Privacidade</Link> da Amazon.
       </p>
 
       <div className="login__toggle">
         {isSigningUp ? (
-          <p>Already on Amazon Clone? <button className="login-popover__link-btn" onClick={() => setIsSigningUp(false)}>Sign In</button></p>
+          <p>Já tem uma conta? <button className="login-popover__link-btn" onClick={() => setIsSigningUp(false)}>Fazer login</button></p>
         ) : (
-          <p>New to Amazon Clone? <button className="login-popover__link-btn" onClick={() => setIsSigningUp(true)}>Create an account</button></p>
+          <p>Novo por aqui? <button className="login-popover__link-btn" onClick={() => setIsSigningUp(true)}>Crie sua conta</button></p>
         )}
       </div>
     </div>

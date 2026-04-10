@@ -1,23 +1,25 @@
+/* ═══════════════════════════════════════════
+   LOGIN PAGE — Full page login/signup
+   ═══════════════════════════════════════════ */
 .login {
   display: flex;
   align-items: center;
-  background-color: var(--bg-card);
+  background-color: var(--bg-primary);
   flex-direction: column;
   padding-inline: 1em;
-
-
+  min-height: 100vh;
 }
 
 .login__wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
-
+  width: 100%;
+  max-width: 400px;
+  padding-bottom: 3em;
 
   opacity: 0.5;
   transform: translateY(2em);
-
   transition: transform .3s ease, opacity .25s ease-in;
 }
 
@@ -30,21 +32,26 @@
   margin: 2rem 0;
 }
 
+/* ─── Form container ─── */
 .login-modal__container .login__container {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .login__container {
-  background: white;
-  border: 0.05em solid #bcbcbc;
-  border-radius: .25em;
-  max-width: 21.5em;
-  padding: 0.75em 1.5em 1.5em;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 400px;
+  padding: 20px 26px 26px;
 }
 
 .login__container>h2 {
-  font-size: 1.85em;
+  font-size: 1.65em;
+  font-weight: 700;
   padding: 0;
+  margin-bottom: 4px;
+  color: var(--text-primary);
 }
 
 .login__container>form {
@@ -53,25 +60,27 @@
 }
 
 .login__container>form input {
-  padding: .25em .5em;
-  font-size: .85em;
-  margin-bottom: 1em;
-  border: 0.075em solid rgb(162, 162, 162);
-  border-radius: .15em;
-  background: #e7f0fe;
+  padding: 8px 10px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text-primary);
   outline: none;
-
-  transition: .25s ease;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .login__container>form input:focus {
-  border: 0.075em solid rgb(251, 155, 33);
-  box-shadow: 0 0 .25em .05em rgb(251, 155, 33);
+  border-color: #ff6200;
+  box-shadow: 0 0 0 3px rgba(255, 98, 0, 0.15);
 }
 
 .login__container>form label {
-  font-size: .85em;
+  font-size: 13px;
   font-weight: 700;
+  margin-bottom: 2px;
+  color: var(--text-primary);
 }
 
 .login__container>p {
@@ -79,6 +88,46 @@
   margin-top: 1.5em;
 }
 
+/* ─── Sign In button ─── */
+.login__signInButton {
+  background: #ff6200;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: 'Amazon Ember', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 9px 0;
+  margin-top: 4px;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.login__signInButton:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.login button.active {
+  opacity: .5;
+}
+
+/* ─── Error message ─── */
+.login__error {
+  font-size: 13px;
+  color: #d13212;
+  background: #fff0ed;
+  border: 1px solid #fcc;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin-bottom: 10px;
+}
+
+.login__error::first-letter {
+  text-transform: uppercase;
+}
+
+/* ─── Full page bottom link ─── */
 .login__wrapper>p {
   position: relative;
   font-size: .85em;
@@ -94,61 +143,32 @@
   top: -5%;
   position: absolute;
   width: 100%;
-  height: 0.05em;
-  background: #bcbcbc;
+  height: 1px;
+  background: var(--border);
 }
 
 .login__wrapper>p a {
   text-decoration: none;
   cursor: pointer;
   padding: 0;
-  color: rgb(82, 146, 163);
+  color: #c45500;
 }
 
 .login__wrapper>p a:hover {
   text-decoration: underline;
-  color: rgb(180, 120, 30);
+  color: #c45500;
 }
 
-.login__signInButton {
-  background: linear-gradient(#f6dd9e, #f0c24d);
-  border: 0.075em solid rgb(135, 135, 135);
-  border-radius: .1em;
-  cursor: pointer;
-}
-
-.login__signInButton:disabled {
-  color: black;
-  opacity: .7;
-}
-
-.login__signInButton:hover {
-  background: linear-gradient(#ffdd87, #e8b537);
-}
-
-.login button.active {
-  opacity: .5;
-}
-
-.login__error {
-  font-size: .8em;
-  color: rgb(255, 114, 21);
-  margin-left: auto;
-}
-
-.login__error::first-letter {
-  text-transform: uppercase;
-}
-
+/* ─── Checkout header ─── */
 .checkout__header>button {
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  color: rgb(82, 146, 163);
+  color: #c45500;
 }
 
 .checkout__header>button:hover {
   text-decoration: underline;
-  color: rgb(180, 120, 30);
+  color: #c45500;
 }

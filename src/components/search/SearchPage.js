@@ -101,22 +101,23 @@ function CheckGroup({ title, options, selected, onChange }) {
 export default function SearchPage() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
+  const categoryParam = searchParams.get("c");
 
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(categoryParam ? [categoryParam] : []);
   const [brands, setBrands] = useState([]);
   const [minRating, setMinRating] = useState(0);
   const [maxPrice, setMaxPrice] = useState("");
   const [sortBy, setSortBy] = useState("relevance");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Reset filters when query changes
+  // Reset filters when query or category param changes
   useEffect(() => {
-    setCategories([]);
+    setCategories(categoryParam ? [categoryParam] : []);
     setBrands([]);
     setMinRating(0);
     setMaxPrice("");
     setSortBy("relevance");
-  }, [query]);
+  }, [query, categoryParam]);
 
   const toggleCheckbox = (setter, list, value) => {
     setter(
