@@ -11,6 +11,13 @@
 
 ---
 
+## 🌐 Acesso ao Projeto (Deploy)
+
+Você pode acessar e testar o protótipo funcional online através do link:  
+👉 **[https://amazon-redesign-wine.vercel.app/](https://amazon-redesign-wine.vercel.app/)**
+
+---
+
 ## 📖 Sobre o Projeto
 
 Este projeto é o resultado prático do Trabalho de Conclusão de Curso (TCC) intitulado **"Usabilidade e Design da Interface para Marketplaces"**. O objetivo central é propor uma reformulação do layout da Amazon.com para mitigar problemas de **sobrecarga cognitiva**, **poluição visual** e **fragmentação da navegação**, aplicando princípios consolidados de **UX Design** e **Usabilidade**.
