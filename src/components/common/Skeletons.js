@@ -4,7 +4,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 export function ProductCardSkeleton({ count = 1 }) {
   return Array.from({ length: count }).map((_, i) => (
-    <div className="plp__card" key={i} aria-hidden="true">
+    <div className="plp__card" key={i} aria-hidden="true" inert="">
       <div className="plp__card-img-wrap">
         <Skeleton height={200} borderRadius={8} />
       </div>

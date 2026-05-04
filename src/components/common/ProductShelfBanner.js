@@ -23,7 +23,7 @@ function ProductShelfBanner({ title, products, linkTo, bannerSrc, bannerAlt }) {
     <section className="shelf-banner">
       {/* Header */}
       <div className="shelf-banner__header">
-        <h2 className="shelf-banner__title">Mais estilo para o seu lar</h2>
+        <h2 className="shelf-banner__title">{title}</h2>
         {linkTo && (
           <Link to={linkTo} className="shelf-banner__see-all">
             Ver tudo →

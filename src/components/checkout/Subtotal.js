@@ -14,7 +14,7 @@ function Subtotal() {
   return (
     <div className="subtotal">
       <div className="subtotal__title">
-        Subtotal ({!cart.length ? 'empty' : `${cart.length} ${cart.length === 1 ? 'item' : 'items'}` }):&nbsp;
+        Subtotal ({!cart.length ? 'vazio' : `${cart.length} ${cart.length === 1 ? 'item' : 'itens'}` }):&nbsp;
         <strong>
           {utils.formatter.format(
             cart.reduce(
@@ -25,22 +25,23 @@ function Subtotal() {
         </strong>
       </div>
       <div className="subtotal__gift">
-        <input type="checkbox" name="gift" />
-        <span>This order contains a gift</span>
+        <input type="checkbox" name="gift" id="subtotal-gift" />
+        <label htmlFor="subtotal-gift">Este pedido contém um presente</label>
       </div>
       <button
         onClick={() => {
           if (!cart.length) {
-            setError('Cart is empty');
+            setError('Seu carrinho está vazio');
             return;
           }
-          profile ? navigate("/payment") : setError('Please sign in first');
+          profile ? navigate("/payment") : setError('Por favor, faça login primeiro');
         }}
         className="subtotal__button"
+        aria-label="Fechar pedido e ir para o pagamento"
       >
-        Proceed to checkout
+        Fechar pedido
       </button>
-      <div className="subtotal__error">
+      <div className="subtotal__error" role="alert">
         {error}
       </div>
     </div>

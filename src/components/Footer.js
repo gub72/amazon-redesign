@@ -75,7 +75,7 @@ function Footer() {
     <footer className="footer">
 
       {/* Main links grid — desktop */}
-      <div className="footer__main">
+      <nav className="footer__main" aria-label="Links úteis do rodapé">
         <div className="footer__columns desktop-footer-links">
           {footerLinks.map((section) => (
             <div className="footer__column" key={section.title}>
@@ -97,19 +97,19 @@ function Footer() {
             <FooterAccordion key={section.title} section={section} />
           ))}
         </div>
-      </div>
+      </nav>
 
       {/* Divider + logo + country */}
       <div className="footer__mid">
         <div className="footer__mid-inner">
-          <a href="#top" className="footer__logo" aria-label="Amazon">
+          <a href="#top" className="footer__logo" aria-label="Voltar para o topo da Amazon">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
               alt="Amazon"
               className="footer__logo-img"
             />
           </a>
-          <button className="footer__country-btn" id="footer-country-btn">
+          <button className="footer__country-btn" id="footer-country-btn" aria-label="Selecionar país ou região">
             <span className="footer__flag" role="img" aria-label="Brasil">
               🇧🇷
             </span>
@@ -120,37 +120,39 @@ function Footer() {
 
       {/* Bottom legal */}
       <div className="footer__bottom">
-        <div className="footer__bottom-links">
+        <nav className="footer__bottom-links" aria-label="Informações legais">
           <a href="#top">Condições de Uso</a>
-          <span className="footer__separator">|</span>
+          <span className="footer__separator" aria-hidden="true">|</span>
           <a href="#top">Notificação de Privacidade</a>
-          <span className="footer__separator">|</span>
+          <span className="footer__separator" aria-hidden="true">|</span>
           <a href="#top">Cookies</a>
-          <span className="footer__separator">|</span>
+          <span className="footer__separator" aria-hidden="true">|</span>
           <a href="#top">Anúncios Baseados em Interesses</a>
-        </div>
-        <p className="footer__copyright">
+        </nav>
+        <small className="footer__copyright">
           © 2021-2026 Amazon.com, Inc. ou suas afiliadas
-        </p>
+        </small>
       </div>
 
       {/* Company info */}
-      <div className="footer__company">
-        <p>
-          Amazon Serviços de Varejo do Brasil Ltda. | CNPJ 15.436.940/0001-03
-        </p>
-        <p>
-          Av. Juscelino Kubitschek, 2041, Torre E, 18° andar - São Paulo CEP:
-          04543-011 |{" "}
-          <a href="#top">Fale conosco</a>
-          {" | "}
-          <a href="mailto:ajuda@amazon.com.br">ajuda-amazon@amazon.com.br</a>
-        </p>
-        <p>
-          Formas de pagamento aceitas: cartões de crédito (Visa, MasterCard, Elo
-          e American Express), cartões de débito (Visa e Elo), Boleto e Pix.
-        </p>
-      </div>
+      <address className="footer__company" style={{ fontStyle: "normal" }}>
+        <small>
+          <p>
+            Amazon Serviços de Varejo do Brasil Ltda. | CNPJ 15.436.940/0001-03
+          </p>
+          <p>
+            Av. Juscelino Kubitschek, 2041, Torre E, 18° andar - São Paulo CEP:
+            04543-011 |{" "}
+            <a href="#top">Fale conosco</a>
+            {" | "}
+            <a href="mailto:ajuda@amazon.com.br">ajuda-amazon@amazon.com.br</a>
+          </p>
+          <p>
+            Formas de pagamento aceitas: cartões de crédito (Visa, MasterCard, Elo
+            e American Express), cartões de débito (Visa e Elo), Boleto e Pix.
+          </p>
+        </small>
+      </address>
     </footer>
   );
 }

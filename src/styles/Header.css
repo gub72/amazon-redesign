@@ -331,13 +331,14 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 2000;
-  display: flex;
+  display: none;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.35s ease;
 }
-
+ 
 .header__mobileNav--active {
+  display: flex;
   opacity: 1;
   visibility: visible;
 }

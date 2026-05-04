@@ -96,10 +96,10 @@ const HighlightCards = () => {
       title: 'Mais vendidos em Eletrônicos',
       type: 'grid',
       items: [
-        { id: p106?.id, image: p106?.image, discount: calculateDiscount(p106?.oldPrice, p106?.price) },
-        { id: p121?.id, image: p121?.image, discount: calculateDiscount(p121?.oldPrice, p121?.price) },
-        { id: p126?.id, image: p126?.image, discount: calculateDiscount(p126?.oldPrice, p126?.price) },
-        { id: p132?.id, image: p132?.image, discount: calculateDiscount(p132?.oldPrice, p132?.price) }
+        { id: p106?.id, name: p106?.name, image: p106?.image, discount: calculateDiscount(p106?.oldPrice, p106?.price) },
+        { id: p121?.id, name: p121?.name, image: p121?.image, discount: calculateDiscount(p121?.oldPrice, p121?.price) },
+        { id: p126?.id, name: p126?.name, image: p126?.image, discount: calculateDiscount(p126?.oldPrice, p126?.price) },
+        { id: p132?.id, name: p132?.name, image: p132?.image, discount: calculateDiscount(p132?.oldPrice, p132?.price) }
       ]
     },
     {
@@ -158,7 +158,7 @@ const HighlightCards = () => {
             {card.items.map((item) => (
               <div key={item.id} className="highlight-card__grid-item">
                 {item.discount && <span className="highlight-card__discount" style={{ position: 'absolute', right: 0, top: 0 }}>{item.discount}</span>}
-                <img src={item.image} alt="GPU" className="highlight-card__image-grid" />
+                <img src={item.image} alt={item.name || "Produto"} className="highlight-card__image-grid" />
               </div>
             ))}
           </div>

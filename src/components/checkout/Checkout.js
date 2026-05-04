@@ -21,13 +21,14 @@ function Checkout() {
           href={socials.github}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Anúncio promocional"
         >
-          <img src={"/assets/background/cart-ad.png"} alt="Developer Ad" className="checkout__ad" width={1035} height={128} />
+          <img src={"/assets/background/cart-ad.png"} alt="Ofertas exclusivas da Amazon" className="checkout__ad" width={1035} height={128} />
         </a>
 
         <div className="checkout__header">
-          <h2 className="checkout__title">Shopping Cart</h2>
-          <button onClick={handleEmptyCart}>Deselect all items</button>
+          <h2 className="checkout__title">Seu Carrinho de Compras</h2>
+          <button onClick={handleEmptyCart} aria-label="Esvaziar carrinho">Limpar carrinho</button>
         </div>
 
         <div className="checkout__products">

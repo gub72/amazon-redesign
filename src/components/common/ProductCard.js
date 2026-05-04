@@ -19,7 +19,7 @@ function ProductCard({ product }) {
   };
 
   return (
-    <motion.div
+    <motion.article
       className="plp__card"
       id={`product-card-${id}`}
       initial={{ opacity: 0, y: 20 }}
@@ -70,7 +70,7 @@ function ProductCard({ product }) {
           Adicionar ao carrinho
         </motion.button>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
 

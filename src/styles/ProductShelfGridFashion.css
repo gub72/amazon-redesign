@@ -30,8 +30,8 @@
 
 .shelf-fashion__see-all {
   font-size: 0.9rem;
-  color: #ff6b00;
-  text-decoration: none;
+  color: #a14900; /* High contrast orange */
+  text-decoration: underline; /* Make link distinguishable from text */
   font-weight: 600;
   transition: color 0.2s, gap 0.2s;
   display: inline-flex;

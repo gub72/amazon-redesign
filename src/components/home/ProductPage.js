@@ -15,7 +15,7 @@ const allProducts = productsData;
 const trustBadges = [
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
         <line x1="1" y1="10" x2="23" y2="10" />
       </svg>
@@ -24,7 +24,7 @@ const trustBadges = [
   },
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="1" y="3" width="15" height="13" rx="2" ry="2" />
         <path d="M16 8h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2" />
         <polyline points="9 18 9 21 15 21 15 18" />
@@ -34,7 +34,7 @@ const trustBadges = [
   },
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="1 4 1 10 7 10" />
         <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
       </svg>
@@ -174,7 +174,7 @@ function ProductPage() {
             <span className="pdp__rating-num">{rating}</span>
             <div
               className="pdp__stars"
-              aria-label={`Rating: ${rating} out of 5`}
+              aria-label={`Avaliação: ${rating} de 5 estrelas`}
             >
               {utils.renderRating(rating * 2).map((val, i) => (
                 <Star key={i} text={val} />
@@ -282,11 +282,12 @@ function ProductPage() {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              aria-hidden="true"
             >
               <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
               <line x1="4" y1="22" x2="4" y2="15" />
             </svg>
-            <a href="#!">Relatar um problema com este produto</a>
+            <a href="#!" aria-label="Relatar um problema com este produto">Relatar um problema com este produto</a>
           </div>
         </div>
 
@@ -333,11 +334,12 @@ function ProductPage() {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              aria-hidden="true"
             >
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            Entregando em São Paulo. <a href="#!">Atualizar local</a>
+            Entregando em São Paulo. <a href="#!" aria-label="Atualizar local de entrega">Atualizar local</a>
           </p>
 
           {/* Stock */}

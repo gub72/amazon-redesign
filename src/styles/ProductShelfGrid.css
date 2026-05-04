@@ -37,9 +37,9 @@
 
 .shelf-grid__see-all {
   font-size: 0.9rem;
-  color: #ff6b00;
+  color: #a14900; /* High contrast orange */
   /* Cyan highlight */
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: 600;
   transition: color 0.2s;
 }

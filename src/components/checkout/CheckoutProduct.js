@@ -25,22 +25,22 @@ function CheckoutProduct({ index, image, title, price, rating }) {
         </div>
 
         <div className="checkout__productGift">
-          <input type="checkbox" name="gift" />
-          <span>This is a gift</span>
-          <a href={socials.github} target="_blank" rel="noreferrer">
-            Learn More
+          <input type="checkbox" name="gift" id={`gift-${index}`} />
+          <label htmlFor={`gift-${index}`}>Este item é para presente</label>
+          <a href={socials.github} target="_blank" rel="noreferrer" aria-label="Saiba mais sobre presentes">
+            Saiba mais
           </a>
         </div>
 
-        <div className="checkout__productRating">
-          {utils.renderRating(rating * 2).map((val, index) => (
-            <Star key={index} text={val} />
+        <div className="checkout__productRating" aria-label={`Avaliação: ${rating} de 5 estrelas`}>
+          {utils.renderRating(rating * 2).map((val, i) => (
+            <Star key={i} text={val} />
           ))}
         </div>
 
         <div className="checkout__productButtons">
-          <button type="button" onClick={handleRemoveItem}>Delete</button>
-          <button type="button">Save for later</button>
+          <button type="button" onClick={handleRemoveItem} aria-label={`Excluir ${title} do carrinho`}>Excluir</button>
+          <button type="button" aria-label={`Salvar ${title} para depois`}>Salvar para depois</button>
         </div>
       </div>
     </div>

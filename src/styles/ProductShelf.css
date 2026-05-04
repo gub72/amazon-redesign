@@ -140,3 +140,9 @@
     font-size: 0.78rem;
   }
 }
+
+/* ── Accessibility: Hide hidden slick slides from tab order ── */
+.slick-slide[aria-hidden="true"] {
+  visibility: hidden;
+  pointer-events: none;
+}

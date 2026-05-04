@@ -6,10 +6,10 @@ import './Slider.css';
 
 const HeroSlider = () => {
     const slides = [
-        '/assets/bannerMain/imagem1.jpg',
-        '/assets/bannerMain/amazon_video_banner.mp4',
-        '/assets/bannerMain/imagem2.jpg',
-        '/assets/bannerMain/imagem3.jpg',
+        { src: '/assets/bannerMain/imagem1.jpg', alt: 'Ofertas exclusivas em eletrônicos e gadgets' },
+        { src: '/assets/bannerMain/amazon_video_banner.mp4', alt: 'Vídeo promocional Prime Video' },
+        { src: '/assets/bannerMain/imagem2.jpg', alt: 'Novas coleções de moda para todas as estações' },
+        { src: '/assets/bannerMain/imagem3.jpg', alt: 'Produtos essenciais para casa e decoração' },
     ];
 
     const settings = {
@@ -27,26 +27,29 @@ const HeroSlider = () => {
     };
 
     return (
-        <div className="slider-container-banner">
+        <section className="slider-container-banner" aria-label="Banners promocionais">
             <Slider {...settings}>
                 {slides.map((slide, index) => (
                     <div key={index} className="slide">
-                        {slide.endsWith('.mp4') ? (
+                        {slide.src.endsWith('.mp4') ? (
                             <video
-                                src={slide}
+                                src={slide.src}
                                 autoPlay
                                 muted
                                 loop
                                 playsInline
                                 className="banner-video"
-                            />
+                                aria-label={slide.alt}
+                            >
+                                <track kind="captions" srcLang="pt" label="Português" src="" default />
+                            </video>
                         ) : (
-                            <img src={slide} alt={`Slide ${index + 1}`} />
+                            <img src={slide.src} alt={slide.alt} />
                         )}
                     </div>
                 ))}
             </Slider>
-        </div>
+        </section>
     );
 };
 

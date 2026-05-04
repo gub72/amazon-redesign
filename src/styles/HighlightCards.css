@@ -144,7 +144,7 @@
 /* ── Badges & Price ── */
 .highlight-card__discount {
   background: var(--bg-badge);
-  color: #fff;
+  color: #111; /* Darker text for better contrast on orange background */
   font-size: 0.75rem;
   font-weight: 700;
   padding: 2px 6px 1px;

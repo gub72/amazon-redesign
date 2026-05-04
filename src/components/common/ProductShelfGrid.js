@@ -114,7 +114,7 @@ function ProductShelfGrid({ title, products, linkTo }) {
       <div className="shelf-grid" id="shelf-grid-eletronicos">
         {/* Header */}
         <div className="shelf-grid__header">
-          <h2 className="shelf-grid__title">Ofertas especiais em Periféricos</h2>
+          <h2 className="shelf-grid__title">{title}</h2>
           {linkTo && (
             <Link to={linkTo} className="shelf-grid__see-all">
               Confira mais →

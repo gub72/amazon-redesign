@@ -205,19 +205,19 @@
 }
 
 .footer__company p {
-  color: #888;
+  color: #bbb; /* Improved contrast for footer text */
   font-size: 0.7rem;
   max-width: 800px;
   margin: 0 auto;
 }
 
 .footer__company a {
-  color: #aaa !important;
-  text-decoration: none;
+  color: #ccc !important;
+  text-decoration: underline; /* Distinguishable links */
 }
 
 .footer__company a:hover {
-  text-decoration: underline;
+  text-decoration: none;
   color: #fff !important;
 }
 
