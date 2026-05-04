@@ -19,7 +19,6 @@ const MenuDesktop = () => {
     const handleLinkClick = (item) => {
         setActiveLink(item);
         // Aqui você pode adicionar a lógica de navegação
-        console.log(`Clicou em: ${item}`);
     };
 
     return (

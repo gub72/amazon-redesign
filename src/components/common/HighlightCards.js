@@ -130,7 +130,7 @@ const HighlightCards = () => {
       case 'single':
         return (
           <div className="highlight-card__single">
-            <img src={card.image} alt={card.productName} className="highlight-card__image-large" />
+            <img src={card.image} alt={card.productName} className="highlight-card__image-large" loading="lazy" decoding="async" crossOrigin="anonymous" width="280" height="240" />
             <p className="highlight-card__product-title">{card.productName}</p>
           </div>
         );
@@ -139,7 +139,7 @@ const HighlightCards = () => {
           <div className="highlight-card__list">
             {card.items.map((item) => (
               <div key={item.id} className="highlight-card__list-item">
-                <img src={item.image} alt={item.name} className="highlight-card__image-thumb" />
+                <img src={item.image} alt={item.name} className="highlight-card__image-thumb" loading="lazy" decoding="async" crossOrigin="anonymous" width="80" height="80" />
                 <div className="highlight-card__list-info">
                   {item.discount && <span className="highlight-card__discount">{item.discount}</span>}
                   <div className="highlight-card__price-row">
@@ -158,7 +158,7 @@ const HighlightCards = () => {
             {card.items.map((item) => (
               <div key={item.id} className="highlight-card__grid-item">
                 {item.discount && <span className="highlight-card__discount" style={{ position: 'absolute', right: 0, top: 0 }}>{item.discount}</span>}
-                <img src={item.image} alt={item.name || "Produto"} className="highlight-card__image-grid" />
+                <img src={item.image} alt={item.name || "Produto"} className="highlight-card__image-grid" loading="lazy" decoding="async" crossOrigin="anonymous" width="120" height="120" />
               </div>
             ))}
           </div>

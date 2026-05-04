@@ -25,9 +25,6 @@ import {
 } from "../redux/features/user/userSlice";
 import getStorageKey from "../data/storageKey";
 
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-
 import useDarkMode from "../hooks/useDarkMode";
 
 /* ── Lazy-loaded pages ── */
@@ -40,9 +37,7 @@ const Orders = lazy(() => import("./orders/Orders"));
 const Login = lazy(() => import("./auth/Login"));
 const SignUp = lazy(() => import("./auth/SignUp"));
 
-const promise = loadStripe(
-  "pk_test_51LKikxJIr5sMtV8TVVCP3FSBVbFYb87a2Al30jAkasBgTDe61U02aRDd5ZJKT68wknB9Woa8ZNReOfSBs1Q3Ip6g00TdXWcbbN"
-);
+
 
 /* ── Animated page wrapper ── */
 const PageTransition = ({ children }) => (
@@ -137,7 +132,7 @@ function AnimatedRoutes() {
             <PageTransition>
               <Header />
               <main id="main-content">
-                <Elements stripe={promise}><Payment /></Elements>
+                <Payment />
               </main>
               <Footer />
             </PageTransition>

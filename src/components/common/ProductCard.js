@@ -38,6 +38,10 @@ function ProductCard({ product }) {
             alt={`${name} — ${brand}, avaliação ${rating} de 5, $${price}`}
             className="plp__card-img"
             loading="lazy"
+            decoding="async"
+            crossOrigin="anonymous"
+            width="200"
+            height="170"
           />
         </div>
         <div className="plp__card-body">

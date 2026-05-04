@@ -4,13 +4,18 @@ import CheckoutProduct from "../checkout/CheckoutProduct";
 import * as utils from "../../logic/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { CardElement } from "@stripe/react-stripe-js";
+import { CardElement, Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import { v4 } from "uuid";
 import moment from "moment";
 import { emptyCart } from "../../redux/features/cart/cartSlice";
 import { addOrder } from "../../redux/features/user/userSlice";
 
-function Payment() {
+const stripePromise = loadStripe(
+  "pk_test_51LKikxJIr5sMtV8TVVCP3FSBVbFYb87a2Al30jAkasBgTDe61U02aRDd5ZJKT68wknB9Woa8ZNReOfSBs1Q3Ip6g00TdXWcbbN"
+);
+
+function PaymentContent() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -128,6 +133,14 @@ function Payment() {
         </div>
       </div>
     </div>
+  );
+}
+
+function Payment() {
+  return (
+    <Elements stripe={stripePromise}>
+      <PaymentContent />
+    </Elements>
   );
 }
 
