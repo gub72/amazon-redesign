@@ -83,6 +83,9 @@ function BannerCarousel({ banners }) {
               alt={`Banner promocional ${i + 1}`}
               className="shelf-grid__banner-img"
               loading="lazy"
+              decoding="async"
+              width="350"
+              height="188"
             />
           </div>
         ))}
@@ -130,6 +133,10 @@ function ProductShelfGrid({ title, products, linkTo }) {
               src={SHELF_BANNERS.main}
               alt="Banner promocional principal"
               className="shelf-grid__banner-img"
+              loading="lazy"
+              decoding="async"
+              width="1000"
+              height="279"
             />
           </div>
 
@@ -148,6 +155,10 @@ function ProductShelfGrid({ title, products, linkTo }) {
                   src={src}
                   alt={`Banner promocional ${i + 1}`}
                   className="shelf-grid__banner-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="350"
+                  height="188"
                 />
               </div>
             ))}
@@ -169,6 +180,10 @@ function ProductShelfGrid({ title, products, linkTo }) {
               src={SHELF_BANNERS.main}
               alt="Banner promocional principal"
               className="shelf-grid__banner-img"
+              loading="lazy"
+              decoding="async"
+              width="1000"
+              height="279"
             />
           </div>
 

@@ -44,6 +44,10 @@ function ProductShelfGridFashion({ title, products, linkTo, banners }) {
               src={banners[0]}
               alt="Banner Moda 1"
               className="shelf-fashion__banner-img"
+              loading="lazy"
+              decoding="async"
+              width="500"
+              height="205"
             />
           </div>
           <div className="shelf-fashion__banner-item">
@@ -51,6 +55,10 @@ function ProductShelfGridFashion({ title, products, linkTo, banners }) {
               src={banners[1]}
               alt="Banner Moda 2"
               className="shelf-fashion__banner-img"
+              loading="lazy"
+              decoding="async"
+              width="500"
+              height="205"
             />
           </div>
         </div>

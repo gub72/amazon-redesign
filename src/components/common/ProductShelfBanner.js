@@ -38,6 +38,10 @@ function ProductShelfBanner({ title, products, linkTo, bannerSrc, bannerAlt }) {
             src={bannerSrc}
             alt={bannerAlt || "Banner promocional"}
             className="shelf-banner__image"
+            loading="lazy"
+            decoding="async"
+            width="900"
+            height="424"
           />
         </div>
       )}

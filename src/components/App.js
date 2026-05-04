@@ -27,8 +27,9 @@ import getStorageKey from "../data/storageKey";
 
 import useDarkMode from "../hooks/useDarkMode";
 
+import Home from "./home/Home";
+
 /* ── Lazy-loaded pages ── */
-const Home = lazy(() => import("./home/Home"));
 const ProductPage = lazy(() => import("./home/ProductPage"));
 const SearchPage = lazy(() => import("./search/SearchPage"));
 const Checkout = lazy(() => import("./checkout/Checkout"));

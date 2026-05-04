@@ -130,7 +130,17 @@ const HighlightCards = () => {
       case 'single':
         return (
           <div className="highlight-card__single">
-            <img src={card.image} alt={card.productName} className="highlight-card__image-large" loading="lazy" decoding="async" crossOrigin="anonymous" width="280" height="240" />
+            <img
+              src={card.image}
+              alt={card.productName}
+              className="highlight-card__image-large"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              crossOrigin="anonymous"
+              width="280"
+              height="240"
+            />
             <p className="highlight-card__product-title">{card.productName}</p>
           </div>
         );

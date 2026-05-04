@@ -1,13 +1,19 @@
-import React, { useMemo } from "react";
+import React, { useMemo, lazy, Suspense } from "react";
 import "../../styles/Home.css";
 import HeroSlider from "../../components/BannerMain/Slider";
 import BannerCategory from "../BannerCategory/index";
-import ProductShelf from "../common/ProductShelf";
-import ProductShelfGrid from "../common/ProductShelfGrid";
-import ProductShelfBanner from "../common/ProductShelfBanner";
-import ProductShelfGridFashion from "../common/ProductShelfGridFashion";
 import HighlightCards from "../common/HighlightCards";
 import productsData from "../../data/products";
+
+import ProductShelf from "../common/ProductShelf";
+
+// Lazy load only very heavy/bottom components
+const ProductShelfGrid = lazy(() => import("../common/ProductShelfGrid"));
+const ProductShelfBanner = lazy(() => import("../common/ProductShelfBanner"));
+const ProductShelfGridFashion = lazy(() => import("../common/ProductShelfGridFashion"));
+
+// Loading fallback for shelves
+const ShelfLoader = () => <div style={{ height: '300px', margin: '20px 0', background: 'rgba(0,0,0,0.05)', borderRadius: '8px' }} />;
 
 /* Category label mapping */
 const CATEGORY_LABELS = {
@@ -81,58 +87,60 @@ function Home() {
         <BannerCategory />
 
         {/* Category Shelves */}
-        {shelves.map((shelf) => {
-          /* Casa e Decoração → banner + 6×2 product grid */
-          if (BANNER_CATEGORIES[shelf.category]) {
-            const cfg = BANNER_CATEGORIES[shelf.category];
-            return (
-              <ProductShelfBanner
-                key={shelf.category}
-                title={shelf.title}
-                products={shelf.products.slice(0, cfg.maxProducts)}
-                linkTo={shelf.linkTo}
-                bannerSrc={cfg.bannerSrc}
-                bannerAlt={cfg.bannerAlt}
-              />
-            );
-          }
+        <Suspense fallback={<ShelfLoader />}>
+          {shelves.map((shelf) => {
+            /* Casa e Decoração → banner + 6×2 product grid */
+            if (BANNER_CATEGORIES[shelf.category]) {
+              const cfg = BANNER_CATEGORIES[shelf.category];
+              return (
+                <ProductShelfBanner
+                  key={shelf.category}
+                  title={shelf.title}
+                  products={shelf.products.slice(0, cfg.maxProducts)}
+                  linkTo={shelf.linkTo}
+                  bannerSrc={cfg.bannerSrc}
+                  bannerAlt={cfg.bannerAlt}
+                />
+              );
+            }
 
-          /* Eletrônicos → grid with interspersed banners */
-          if (GRID_CATEGORIES.includes(shelf.category)) {
+            /* Eletrônicos → grid with interspersed banners */
+            if (GRID_CATEGORIES.includes(shelf.category)) {
+              return (
+                <ProductShelfGrid
+                  key={shelf.category}
+                  title={shelf.title}
+                  products={shelf.products}
+                  linkTo={shelf.linkTo}
+                />
+              );
+            }
+
+            /* Moda → 6-col grid with 2 interspersed banners */
+            if (FASHION_CATEGORIES[shelf.category]) {
+              const cfg = FASHION_CATEGORIES[shelf.category];
+              return (
+                <ProductShelfGridFashion
+                  key={shelf.category}
+                  title={shelf.title}
+                  products={shelf.products.slice(0, 12)}
+                  linkTo={shelf.linkTo}
+                  banners={cfg.banners}
+                />
+              );
+            }
+
+            /* Default → slider / regular shelf */
             return (
-              <ProductShelfGrid
+              <ProductShelf
                 key={shelf.category}
                 title={shelf.title}
                 products={shelf.products}
                 linkTo={shelf.linkTo}
               />
             );
-          }
-
-          /* Moda → 6-col grid with 2 interspersed banners */
-          if (FASHION_CATEGORIES[shelf.category]) {
-            const cfg = FASHION_CATEGORIES[shelf.category];
-            return (
-              <ProductShelfGridFashion
-                key={shelf.category}
-                title={shelf.title}
-                products={shelf.products.slice(0, 12)}
-                linkTo={shelf.linkTo}
-                banners={cfg.banners}
-              />
-            );
-          }
-
-          /* Default → slider / regular shelf */
-          return (
-            <ProductShelf
-              key={shelf.category}
-              title={shelf.title}
-              products={shelf.products}
-              linkTo={shelf.linkTo}
-            />
-          );
-        })}
+          })}
+        </Suspense>
       </div>
     </div>
   );

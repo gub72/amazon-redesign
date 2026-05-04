@@ -152,7 +152,15 @@ function ProductPage() {
             ))}
           </div>
           <div className="pdp__img-wrapper">
-            <img src={image} alt={`${name} — ${brand}, ${category}`} className="pdp__img" loading="lazy" />
+            <img 
+              src={image} 
+              alt={`${name} — ${brand}, ${category}`} 
+              className="pdp__img" 
+              loading="lazy" 
+              decoding="async"
+              width="500"
+              height="500"
+            />
           </div>
           <p className="pdp__img-hint">Clique para ver a imagem completa</p>
         </div>

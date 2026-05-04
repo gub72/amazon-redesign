@@ -3,22 +3,33 @@
 
 <head>
   <meta charset="utf-8" />
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="/assets/bannerMain/imagem1.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="/assets/fonts/AmazonEmber.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="/assets/fonts/AmazonEmberBold.woff" as="font" type="font/woff" crossorigin>
+  
+  <link rel="preconnect" href="https://i.ibb.co" crossorigin>
+  <link rel="preconnect" href="https://images.weserv.nl" crossorigin>
+  
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="Amazon Redesign - Uma experiência de compra moderna, rápida e acessível." />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://js.stripe.com https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com; script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com; img-src 'self' data: https:; font-src 'self' https://fonts.cdnfonts.com; object-src 'none'; frame-src https://js.stripe.com; connect-src 'self' https://www.google-analytics.com https://www.google.com; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://js.stripe.com; connect-src 'self' https:;">
   <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
   <meta name="referrer" content="no-referrer-when-downgrade">
   <title>Amazon.com.br | Tudo Pra Você, De A a Z</title>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GRKCM1BDR"></script>
+  <!-- Google tag (gtag.js) - Deferred -->
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-4GRKCM1BDR"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments) }
-    gtag("js", new Date());
-    gtag("config", "G-4GRKCM1BDR");
+    window.addEventListener('load', function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments) }
+      gtag("js", new Date());
+      gtag("config", "G-4GRKCM1BDR");
+    });
   </script>
   <meta name="google-site-verification" content="j1oFozIXC6xcxsupVgDHSAVdQr4kmM3jqQnmdHCY4Rk" />
 </head>

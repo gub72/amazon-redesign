@@ -19,43 +19,43 @@ const BannerCategory = () => {
         {
             id: 1,
             name: 'Celulares',
-            image: '/assets/bannerCategory/banner_category_1.png',
+            image: '/assets/bannerCategory/banner_category_1.webp',
             link: '/categoria/celulares'
         },
         {
             id: 2,
             name: 'Notebooks',
-            image: '/assets/bannerCategory/banner_category_2.png',
+            image: '/assets/bannerCategory/banner_category_2.webp',
             link: '/categoria/notebooks'
         },
         {
             id: 3,
             name: 'Áudio',
-            image: '/assets/bannerCategory/banner_category_3.png',
+            image: '/assets/bannerCategory/banner_category_3.webp',
             link: '/categoria/audio'
         },
         {
             id: 4,
             name: 'Dispositivos',
-            image: '/assets/bannerCategory/banner_category_4.png',
+            image: '/assets/bannerCategory/banner_category_4.webp',
             link: '/categoria/dispositivos'
         },
         {
             id: 5,
             name: 'Gaming',
-            image: '/assets/bannerCategory/banner_category_5.png',
+            image: '/assets/bannerCategory/banner_category_5.webp',
             link: '/categoria/gaming'
         },
         {
             id: 6,
             name: 'Computadores',
-            image: '/assets/bannerCategory/banner_category_6.png',
+            image: '/assets/bannerCategory/banner_category_6.webp',
             link: '/categoria/computadores'
         },
         {
             id: 7,
             name: 'Outros',
-            image: '/assets/bannerCategory/banner_category_7.png',
+            image: '/assets/bannerCategory/banner_category_7.webp',
             link: '/categoria/outros'
         }
     ];
@@ -70,6 +70,10 @@ const BannerCategory = () => {
                             src={category.image}
                             alt={category.name}
                             className="category-image"
+                            loading="lazy"
+                            decoding="async"
+                            width="200"
+                            height="195"
                         />
                         <div className="category-info">
                             <h3 className="category-name">{category.name}</h3>
@@ -91,6 +95,10 @@ const BannerCategory = () => {
                                     src={category.image}
                                     alt={category.name}
                                     className="category-image"
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="200"
+                                    height="195"
                                 />
                                 <div className="category-info">
                                     <h3 className="category-name">{category.name}</h3>

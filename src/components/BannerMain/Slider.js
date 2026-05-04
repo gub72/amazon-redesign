@@ -6,10 +6,10 @@ import './Slider.css';
 
 const HeroSlider = () => {
     const slides = [
-        { src: '/assets/bannerMain/imagem1.jpg', alt: 'Ofertas exclusivas em eletrônicos e gadgets' },
+        { src: '/assets/bannerMain/imagem1.webp', alt: 'Ofertas exclusivas em eletrônicos e gadgets' },
+        { src: '/assets/bannerMain/imagem2.webp', alt: 'Novas coleções de moda para todas as estações' },
         { src: '/assets/bannerMain/amazon_video_banner.mp4', alt: 'Vídeo promocional Prime Video' },
-        { src: '/assets/bannerMain/imagem2.jpg', alt: 'Novas coleções de moda para todas as estações' },
-        { src: '/assets/bannerMain/imagem3.jpg', alt: 'Produtos essenciais para casa e decoração' },
+        { src: '/assets/bannerMain/imagem3.webp', alt: 'Produtos essenciais para casa e decoração' },
     ];
 
     const settings = {
@@ -40,11 +40,19 @@ const HeroSlider = () => {
                                 playsInline
                                 className="banner-video"
                                 aria-label={slide.alt}
+                                preload="metadata"
                             >
                                 <track kind="captions" srcLang="pt" label="Português" src="" default />
                             </video>
                         ) : (
-                            <img src={slide.src} alt={slide.alt} />
+                            <img
+                                src={slide.src}
+                                alt={slide.alt}
+                                width="1200"
+                                height="509"
+                                loading={index === 0 ? "eager" : "lazy"}
+                                decoding={index === 0 ? "sync" : "async"}
+                            />
                         )}
                     </div>
                 ))}
