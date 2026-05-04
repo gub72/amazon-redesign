@@ -20,11 +20,11 @@ import "../../styles/ProductShelfGrid.css";
  */
 
 const SHELF_BANNERS = {
-  main: "/assets/shelfBanner/shelfBanner_1.png",
+  main: "/assets/shelfBanner/shelfBanner_1.webp",
   secondary: [
-    "/assets/shelfBanner/shelfBanner_A1.png",
-    "/assets/shelfBanner/shelfBanner_A2.png",
-    "/assets/shelfBanner/shelfBanner_A3.png",
+    "/assets/shelfBanner/shelfBanner_A1.webp",
+    "/assets/shelfBanner/shelfBanner_A2.webp",
+    "/assets/shelfBanner/shelfBanner_A3.webp",
   ],
 };
 

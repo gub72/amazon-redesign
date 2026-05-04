@@ -40,8 +40,8 @@ const GRID_CATEGORIES = ["Electronics"];
 const FASHION_CATEGORIES = {
   Fashion: {
     banners: [
-      "/assets/shelfBanner/shelfBanner_moda_1.png",
-      "/assets/shelfBanner/shelfBanner_moda_2.png",
+      "/assets/shelfBanner/shelfBanner_moda_1.webp",
+      "/assets/shelfBanner/shelfBanner_moda_2.webp",
     ],
   },
 };
@@ -49,7 +49,7 @@ const FASHION_CATEGORIES = {
 /* Categories that should use the banner + 6-col grid layout */
 const BANNER_CATEGORIES = {
   "Home Decoration": {
-    bannerSrc: "/assets/shelfBanner/shelfBanner_casa_e_decoracao.png",
+    bannerSrc: "/assets/shelfBanner/shelfBanner_casa_e_decoracao.webp",
     bannerAlt: "Banner Casa e Decoração",
     maxProducts: 12, // 6 columns × 2 rows
   },

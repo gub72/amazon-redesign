@@ -8,7 +8,7 @@ let content = fs.readFileSync(filePath, 'utf8');
 // Target: https://i.ibb.co/...
 content = content.replace(/image:\s*"https:\/\/i\.ibb\.co\/([^"]+)"/g, (match, path) => {
     const fullUrl = `https://i.ibb.co/${path}`;
-    return `image: "https://images.weserv.nl/?w=300&h=300&fit=cover&output=webp&url=${fullUrl}"`;
+    return `image: "https://images.weserv.nl/?w=200&h=200&fit=cover&output=webp&url=${fullUrl}"`;
 });
 
 // Target existing weserv URLs that might have different params or none
