@@ -12,6 +12,11 @@ const BannerCategory = () => {
         slidesToShow: 3,
         slidesToScroll: 3,
         arrows: false,
+        customPaging: (i) => (
+            <button aria-label={`Ver mais categorias - Página ${i + 1}`}>
+                {i + 1}
+            </button>
+        ),
     };
 
     // Dados padrão das categorias caso não tenha no categoriesData
@@ -30,13 +35,13 @@ const BannerCategory = () => {
         },
         {
             id: 3,
-            name: 'Áudio',
+            name: 'Dispositivos',
             image: '/assets/bannerCategory/banner_category_3.webp',
             link: '/categoria/audio'
         },
         {
             id: 4,
-            name: 'Dispositivos',
+            name: 'Áudio',
             image: '/assets/bannerCategory/banner_category_4.webp',
             link: '/categoria/dispositivos'
         },
@@ -61,11 +66,17 @@ const BannerCategory = () => {
     ];
 
     return (
-        <section className="banner-category-container">
+        <section className="banner-category-container" aria-label="Categorias em destaque">
             {/* Grid para Desktop */}
             <div className="desktop-grid">
                 {categoryData.map((category) => (
-                    <div key={category.id} className="category-card">
+                    <div
+                        key={category.id}
+                        className="category-card"
+                        tabIndex="0"
+                        role="article"
+                        aria-label={`Categoria: ${category.name}`}
+                    >
                         <img
                             src={category.image}
                             alt={category.name}
@@ -90,7 +101,12 @@ const BannerCategory = () => {
                 <Slider {...sliderSettings}>
                     {categoryData.map((category) => (
                         <div key={category.id} className="category-slide">
-                            <div className="category-card">
+                            <div
+                                className="category-card"
+                                tabIndex="0"
+                                role="article"
+                                aria-label={`Categoria: ${category.name}`}
+                            >
                                 <img
                                     src={category.image}
                                     alt={category.name}

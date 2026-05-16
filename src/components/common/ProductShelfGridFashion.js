@@ -18,7 +18,7 @@ function ProductShelfGridFashion({ title, products, linkTo, banners }) {
   const bottomProducts = products.slice(6, 12);
 
   return (
-    <section className="shelf-fashion">
+    <section className="shelf-fashion" aria-label={title}>
       {/* Header */}
       <div className="shelf-fashion__header">
         <h2 className="shelf-fashion__title">{title}</h2>
@@ -39,10 +39,15 @@ function ProductShelfGridFashion({ title, products, linkTo, banners }) {
       {/* Banners */}
       {banners && banners.length >= 2 && (
         <div className="shelf-fashion__banners-row">
-          <div className="shelf-fashion__banner-item">
+          <div 
+            className="shelf-fashion__banner-item" 
+            tabIndex="0" 
+            role="article" 
+            aria-label="OFERTA POR TEMPO LIMITADO - PROMOÇÃO DE MODA - ATÉ 50% OFF"
+          >
             <img
               src={banners[0]}
-              alt="Banner Moda 1"
+              alt="OFERTA POR TEMPO LIMITADO - PROMOÇÃO DE MODA - ATÉ 50% OFF"
               className="shelf-fashion__banner-img"
               loading="lazy"
               decoding="async"
@@ -50,10 +55,15 @@ function ProductShelfGridFashion({ title, products, linkTo, banners }) {
               height="205"
             />
           </div>
-          <div className="shelf-fashion__banner-item">
+          <div 
+            className="shelf-fashion__banner-item" 
+            tabIndex="0" 
+            role="article" 
+            aria-label="NOVA COLEÇÃO - NOVA CHEGADA - ATÉ 50% DE DESCONTO - COMPRE AGORA"
+          >
             <img
               src={banners[1]}
-              alt="Banner Moda 2"
+              alt="NOVA COLEÇÃO - NOVA CHEGADA - ATÉ 50% DE DESCONTO - COMPRE AGORA"
               className="shelf-fashion__banner-img"
               loading="lazy"
               decoding="async"

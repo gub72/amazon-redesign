@@ -6,10 +6,10 @@ import './Slider.css';
 
 const HeroSlider = () => {
     const slides = [
-        { src: '/assets/bannerMain/imagem1.webp', alt: 'Ofertas exclusivas em eletrônicos e gadgets' },
-        { src: '/assets/bannerMain/imagem2.webp', alt: 'Novas coleções de moda para todas as estações' },
-        { src: '/assets/bannerMain/amazon_video_banner.mp4', alt: 'Vídeo promocional Prime Video' },
-        { src: '/assets/bannerMain/imagem3.webp', alt: 'Produtos essenciais para casa e decoração' },
+        { src: '/assets/bannerMain/imagem1.webp', alt: 'amazon echo "Alexa, toque um alarme daqui a 10 minutos." Ela responde na hora. E faz muito mais!' },
+        { src: '/assets/bannerMain/imagem2.webp', alt: 'Tecnologia e praticidade para conectar você ao que realmente importa. Parcele em até 18x sem juros no cartão Amazon' },
+        { src: '/assets/bannerMain/amazon_video_banner.mp4', alt: 'Vídeo promocional do Prime Video. Descubra séries e filmes exclusivos.' },   
+        { src: '/assets/bannerMain/imagem3.webp', alt: 'Encontre os eletrodomésticos ideais para deixar sua casa mais prática. parcele em até 18x sem juros no cartão Amazon. frete GRÁTIS Prime' },
     ];
 
     const settings = {
@@ -24,6 +24,11 @@ const HeroSlider = () => {
         arrows: true,
         pauseOnHover: true,
         cssEase: 'linear',
+        customPaging: (i) => (
+            <button aria-label={slides[i].alt}>
+                {i + 1}
+            </button>
+        ),
     };
 
     return (

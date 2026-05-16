@@ -20,11 +20,23 @@ import "../../styles/ProductShelfGrid.css";
  */
 
 const SHELF_BANNERS = {
-  main: "/assets/shelfBanner/shelfBanner_1.webp",
+  main: {
+    src: "/assets/shelfBanner/shelfBanner_1.webp",
+    alt: "Os melhores periféricos para dominar o jogo. ATÉ 50% OFF. aproveite 10x sem juros"
+  },
   secondary: [
-    "/assets/shelfBanner/shelfBanner_A1.webp",
-    "/assets/shelfBanner/shelfBanner_A2.webp",
-    "/assets/shelfBanner/shelfBanner_A3.webp",
+    {
+      src: "/assets/shelfBanner/shelfBanner_A1.webp",
+      alt: "Logitech - Loja oficial do seu Logitech. Conheça aqui."
+    },
+    {
+      src: "/assets/shelfBanner/shelfBanner_A2.webp",
+      alt: "Jogue em nível máximo. Crie sem pausas. Processadores Intel Core Ultra 200S Plus."
+    },
+    {
+      src: "/assets/shelfBanner/shelfBanner_A3.webp",
+      alt: "QuadCast 2 S. O que já era bom ficou melhor. Saiba mais."
+    },
   ],
 };
 
@@ -72,15 +84,15 @@ function BannerCarousel({ banners }) {
       onTouchEnd={handleTouchEnd}
     >
       <div className="shelf-grid__carousel-track">
-        {banners.map((src, i) => (
+        {banners.map((banner, i) => (
           <div
             key={i}
             className={`shelf-grid__carousel-slide ${i === active ? "shelf-grid__carousel-slide--active" : ""
               }`}
           >
             <img
-              src={src}
-              alt={`Banner promocional ${i + 1}`}
+              src={banner.src}
+              alt={banner.alt}
               className="shelf-grid__banner-img"
               loading="lazy"
               decoding="async"
@@ -113,7 +125,7 @@ function ProductShelfGrid({ title, products, linkTo }) {
   const remainingProducts = products.slice(6);
 
   return (
-    <section className="shelf-grid-eletronicos-container">
+    <section className="shelf-grid-eletronicos-container" aria-label={title}>
       <div className="shelf-grid" id="shelf-grid-eletronicos">
         {/* Header */}
         <div className="shelf-grid__header">
@@ -128,10 +140,15 @@ function ProductShelfGrid({ title, products, linkTo }) {
         {/* ═══════════════ DESKTOP LAYOUT ═══════════════ */}
         <div className="shelf-grid__desktop">
           {/* Banner 1 — full width */}
-          <div className="shelf-grid__banner-full">
+          <div 
+            className="shelf-grid__banner-full" 
+            tabIndex="0" 
+            role="article" 
+            aria-label={SHELF_BANNERS.main.alt}
+          >
             <img
-              src={SHELF_BANNERS.main}
-              alt="Banner promocional principal"
+              src={SHELF_BANNERS.main.src}
+              alt={SHELF_BANNERS.main.alt}
               className="shelf-grid__banner-img"
               loading="lazy"
               decoding="async"
@@ -149,11 +166,17 @@ function ProductShelfGrid({ title, products, linkTo }) {
 
           {/* 3 banners side-by-side */}
           <div className="shelf-grid__banners-row">
-            {SHELF_BANNERS.secondary.map((src, i) => (
-              <div key={i} className="shelf-grid__banner-item">
+            {SHELF_BANNERS.secondary.map((banner, i) => (
+              <div 
+                key={i} 
+                className="shelf-grid__banner-item"
+                tabIndex="0"
+                role="article"
+                aria-label={banner.alt}
+              >
                 <img
-                  src={src}
-                  alt={`Banner promocional ${i + 1}`}
+                  src={banner.src}
+                  alt={banner.alt}
                   className="shelf-grid__banner-img"
                   loading="lazy"
                   decoding="async"
@@ -175,10 +198,15 @@ function ProductShelfGrid({ title, products, linkTo }) {
         {/* ═══════════════ MOBILE LAYOUT ═══════════════ */}
         <div className="shelf-grid__mobile">
           {/* Banner 1 — full width */}
-          <div className="shelf-grid__banner-full">
+          <div 
+            className="shelf-grid__banner-full" 
+            tabIndex="0" 
+            role="article" 
+            aria-label={SHELF_BANNERS.main.alt}
+          >
             <img
-              src={SHELF_BANNERS.main}
-              alt="Banner promocional principal"
+              src={SHELF_BANNERS.main.src}
+              alt={SHELF_BANNERS.main.alt}
               className="shelf-grid__banner-img"
               loading="lazy"
               decoding="async"

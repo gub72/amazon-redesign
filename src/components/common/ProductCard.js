@@ -35,7 +35,7 @@ function ProductCard({ product }) {
         <div className="plp__card-img-wrap">
           <img
             src={image}
-            alt={`${name} — ${brand}, avaliação ${rating} de 5, $${price}`}
+            alt={`${name} — ${brand}`}
             className="plp__card-img"
             loading="lazy"
             decoding="async"
@@ -45,20 +45,20 @@ function ProductCard({ product }) {
           />
         </div>
         <div className="plp__card-body">
-          <p className="plp__card-brand">{brand}</p>
-          <p className="plp__card-title">{name}</p>
-          <div className="plp__card-stars" aria-label={`Avaliação: ${rating} de 5 estrelas`}>
+          <p className="plp__card-brand" tabIndex="0" aria-label={`Marca: ${brand}`}>{brand}</p>
+          <p className="plp__card-title" tabIndex="0" aria-label={`Produto: ${name}`}>{name}</p>
+          <div className="plp__card-stars" tabIndex="0" aria-label={`Avaliação: ${rating} de 5 estrelas`}>
             {utils.renderRating(rating * 2).map((val, i) => (
               <Star key={i} text={val} />
             ))}
-            <span className="plp__card-rating-num">{rating}</span>
+            <span className="plp__card-rating-num" aria-hidden="true">{rating}</span>
           </div>
-          <p className="plp__card-price">
-            <span className="plp__price-sym">$</span>
-            <span className="plp__price-main">{utils.getPrice(price)}</span>
-            <span className="plp__price-dec">.{utils.getPrice(price, "decimal")}</span>
-          </p>
-          <p className="plp__card-delivery">
+          <div className="plp__card-price" tabIndex="0" aria-label={`Preço: ${utils.getPrice(price)} reais e ${utils.getPrice(price, "decimal")} centavos`}>
+            <span className="plp__price-sym" aria-hidden="true">R$</span>
+            <span className="plp__price-main" aria-hidden="true">{utils.getPrice(price)}</span>
+            <span className="plp__price-dec" aria-hidden="true">.{utils.getPrice(price, "decimal")}</span>
+          </div>
+          <p className="plp__card-delivery" tabIndex="0" aria-label="Entrega grátis amanhã">
             <span className="plp__delivery-check" aria-hidden="true">✓</span> Entrega grátis amanhã
           </p>
         </div>

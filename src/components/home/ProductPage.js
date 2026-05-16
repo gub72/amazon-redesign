@@ -217,7 +217,7 @@ function ProductPage() {
                 <span className="pdp__discount">-{discount}%</span>
               )}
               <p className="pdp__price">
-                <span className="pdp__price-sym">$</span>
+                <span className="pdp__price-sym">R$</span>
                 <span className="pdp__price-main">
                   {utils.getPrice(price)}
                 </span>
@@ -228,7 +228,7 @@ function ProductPage() {
             </div>
             {oldPrice && (
               <p className="pdp__old-price">
-                De: <s>${oldPrice.toFixed(2)}</s>
+                De: <s>R${oldPrice.toFixed(2)}</s>
               </p>
             )}
           </div>
@@ -255,7 +255,7 @@ function ProductPage() {
           {/* Installment */}
           <p className="pdp__installment">
             Em até <strong>7x</strong> de{" "}
-            <strong>${installment}</strong> sem juros.{" "}
+            <strong>R${installment}</strong> sem juros.{" "}
             <a href="#!">Ver opções de pagamento</a>
           </p>
 
@@ -317,7 +317,7 @@ function ProductPage() {
 
           {/* Price */}
           <p className="pdp__buybox-price">
-            <span className="pdp__buybox-price-sym">$</span>
+            <span className="pdp__buybox-price-sym">R$</span>
             <span className="pdp__buybox-price-main">
               {utils.getPrice(price)}
             </span>
@@ -426,14 +426,14 @@ function ProductPage() {
               <input type="checkbox" />
               Garantia Estendida contra falhas e defeitos de 12 meses{" "}
               <span className="pdp__extras-price">
-                por ${(price * 0.05).toFixed(2)}
+                por R${(price * 0.05).toFixed(2)}
               </span>
             </label>
             <label className="pdp__extras-option">
               <input type="checkbox" />
               Garantia Estendida contra falhas e defeitos de 24 meses{" "}
               <span className="pdp__extras-price">
-                por ${(price * 0.08).toFixed(2)}
+                por R${(price * 0.08).toFixed(2)}
               </span>
             </label>
           </div>

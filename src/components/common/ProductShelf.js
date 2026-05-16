@@ -60,7 +60,7 @@ function ProductShelf({ title, products, linkTo }) {
   };
 
   return (
-    <section className="shelf">
+    <section className="shelf" aria-label={title}>
       {/* Header */}
       <div className="shelf__header">
         <h2 className="shelf-banner__title">{title}</h2>

@@ -219,7 +219,7 @@ export default function SearchPage() {
 
           {/* Price */}
           <div className="plp__filter-group">
-            <h3 className="plp__filter-title">Preço (máx. $)</h3>
+            <h3 className="plp__filter-title">Preço (máx. R$)</h3>
             <div className="plp__price-inputs">
               <input
                 type="number"
@@ -238,7 +238,7 @@ export default function SearchPage() {
                     className={`plp__price-preset ${maxPrice === p ? "active" : ""}`}
                     onClick={() => setMaxPrice(maxPrice === p ? "" : String(p))}
                   >
-                    Até ${p}
+                    Até R${p}
                   </button>
                 </li>
               ))}
@@ -309,7 +309,7 @@ export default function SearchPage() {
               )}
               {maxPrice && (
                 <button className="plp__chip" onClick={() => setMaxPrice("")}>
-                  Até ${maxPrice} ✕
+                  Até R${maxPrice} ✕
                 </button>
               )}
             </div>

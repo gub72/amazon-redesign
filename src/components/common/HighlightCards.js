@@ -148,7 +148,13 @@ const HighlightCards = () => {
         return (
           <div className="highlight-card__list">
             {card.items.map((item) => (
-              <div key={item.id} className="highlight-card__list-item">
+              <div 
+                key={item.id} 
+                className="highlight-card__list-item"
+                tabIndex="0"
+                role="group"
+                aria-label={`${item.name}. Preço: R$ ${item.price}${item.discount ? `. Desconto de ${item.discount}` : ''}`}
+              >
                 <img src={item.image} alt={item.name} className="highlight-card__image-thumb" loading="lazy" decoding="async" crossOrigin="anonymous" width="80" height="80" />
                 <div className="highlight-card__list-info">
                   {item.discount && <span className="highlight-card__discount">{item.discount}</span>}
@@ -166,7 +172,13 @@ const HighlightCards = () => {
         return (
           <div className="highlight-card__grid">
             {card.items.map((item) => (
-              <div key={item.id} className="highlight-card__grid-item">
+              <div 
+                key={item.id} 
+                className="highlight-card__grid-item"
+                tabIndex="0"
+                role="group"
+                aria-label={item.name || "Produto"}
+              >
                 {item.discount && <span className="highlight-card__discount" style={{ position: 'absolute', right: 0, top: 0 }}>{item.discount}</span>}
                 <img src={item.image} alt={item.name || "Produto"} className="highlight-card__image-grid" loading="lazy" decoding="async" crossOrigin="anonymous" width="120" height="120" />
               </div>
@@ -183,7 +195,13 @@ const HighlightCards = () => {
       {/* Desktop Grid */}
       <div className="highlight-cards__desktop">
         {cardsData.map((card) => (
-          <div key={card.id} className="highlight-card">
+          <div 
+            key={card.id} 
+            className="highlight-card" 
+            tabIndex="0" 
+            role="article" 
+            aria-label={`${card.title}${card.type === 'single' ? `: ${card.productName}` : ''}`}
+          >
             <div className="highlight-card__header">
               <h3 className="highlight-card__title">{card.title}</h3>
             </div>
@@ -199,7 +217,12 @@ const HighlightCards = () => {
         <Slider {...sliderSettings}>
           {cardsData.map((card) => (
             <div key={card.id}>
-              <div className="highlight-card">
+              <div 
+                className="highlight-card" 
+                tabIndex="0" 
+                role="article" 
+                aria-label={`${card.title}${card.type === 'single' ? `: ${card.productName}` : ''}`}
+              >
                 <div className="highlight-card__header">
                   <h3 className="highlight-card__title">{card.title}</h3>
                 </div>

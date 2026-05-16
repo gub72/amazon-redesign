@@ -50,7 +50,7 @@ const FASHION_CATEGORIES = {
 const BANNER_CATEGORIES = {
   "Home Decoration": {
     bannerSrc: "/assets/shelfBanner/shelfBanner_casa_e_decoracao.webp",
-    bannerAlt: "Banner Casa e Decoração",
+    bannerAlt: "Transforme sua casa em um lugar único.",
     maxProducts: 12, // 6 columns × 2 rows
   },
 };

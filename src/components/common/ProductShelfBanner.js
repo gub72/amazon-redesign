@@ -20,7 +20,7 @@ function ProductShelfBanner({ title, products, linkTo, bannerSrc, bannerAlt }) {
   if (!products || products.length === 0) return null;
 
   return (
-    <section className="shelf-banner">
+    <section className="shelf-banner" aria-label={title}>
       {/* Header */}
       <div className="shelf-banner__header">
         <h2 className="shelf-banner__title">{title}</h2>
